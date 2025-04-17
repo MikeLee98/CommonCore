@@ -6,7 +6,7 @@
 /*   By: marioro2 <marioro2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 18:23:10 by marioro2          #+#    #+#             */
-/*   Updated: 2025/04/17 16:21:20 by marioro2         ###   ########.fr       */
+/*   Updated: 2025/04/17 16:39:30 by marioro2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,22 +36,22 @@ char	*strnstr(const char *big, const char *little, size_t len)
 	return (NULL);
 }
 
-char *strnstr(const char *haystack, const char *needle, size_t len) {
-    size_t i, j;
+// char *strnstr(const char *haystack, const char *needle, size_t len) {
+//     size_t i, j;
 
-    // Se a agulha for vazia, devolve o próprio haystack
-    if (*needle == '\0')
-        return (char *)haystack;
+//     // Se a agulha for vazia, devolve o próprio haystack
+//     if (*needle == '\0')
+//         return (char *)haystack;
 
-    for (i = 0; haystack[i] != '\0' && i < len; i++) {
-        // Só tentamos comparar se ainda houver espaço suficiente
-        for (j = 0; needle[j] != '\0' && i + j < len; j++) {
-            if (haystack[i + j] != needle[j])
-                break;
-        }
-        if (needle[j] == '\0')
-            return (char *)(haystack + i); // Encontrou
-    }
+//     for (i = 0; haystack[i] != '\0' && i < len; i++) {
+//         // Só tentamos comparar se ainda houver espaço suficiente
+//         for (j = 0; needle[j] != '\0' && i + j < len; j++) {
+//             if (haystack[i + j] != needle[j])
+//                 break;
+//         }
+//         if (needle[j] == '\0')
+//             return (char *)(haystack + i); // Encontrou
+//     }
 
-    return NULL; // Não encontrou
-}
+//     return NULL; // Não encontrou
+// }
