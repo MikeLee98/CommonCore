@@ -6,7 +6,7 @@
 /*   By: marioro2 <marioro2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 14:54:05 by marioro2          #+#    #+#             */
-/*   Updated: 2025/04/21 12:50:35 by marioro2         ###   ########.fr       */
+/*   Updated: 2025/04/21 17:52:41 by marioro2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,15 @@
 
 size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
-	size_t dst_len = ft_strlen(dst);
-	size_t src_len = ft_strlen(src);
-	// size_t i;
-	// size_t j;
+	size_t dst_len;
+	size_t src_len;
 
-	// i = 0;
-	// j = dstlen;
-	// if (j >= size)
-	// 	return (size + srclen);
-	// while (src[i] && j + 1 < size)
-	// {
-	// 	dst[j] = src[i];
-	// 	j++;
-	// 	i++;
-	// }
-	// dst[j] = '\0';
-	// return (dstlen + srclen);
+	src_len = ft_strlen(src);
+	if (size == 0)
+		return (src_len);
+	dst_len = ft_strlen(dst);
 	if (dst_len >= size)
-		dst_len + size;
+		dst_len = size;
 	if (dst_len == size)
 		return (size + src_len);
 	if (src_len < size - dst_len)
@@ -50,7 +40,7 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 int main() 
 {
     char buffer0[4] = "dst\0";
-    size_t result0 = ft_strlcat(buffer0, "src", 0);
+    size_t result0 = ft_strlcat("dst", "src", 0);
 	printf("Resultado: %s\n", buffer0);
     printf("Comprimento total pretendido: %zu\n", result0);
 	
@@ -85,13 +75,12 @@ int main()
     printf("Comprimento total pretendido: %zu\n", result6);
 	
 	char buffer7[11] = "dst";
-	size_t result7 = ft_strlcat(buffer6, "src", 7);
+	size_t result7 = ft_strlcat(buffer7, "src", 7);
 	printf("Resultado: %s\n", buffer7);
     printf("Comprimento total pretendido: %zu\n", result7);
 
 	char buffer8[12] = "dst";
-	size_t result8 = ft_strlcat(buffer6, "src", 8);
+	size_t result8 = ft_strlcat(buffer8, "src", 8);
 	printf("Resultado: %s\n", buffer8);
     printf("Comprimento total pretendido: %zu\n", result8);
-
 }

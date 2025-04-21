@@ -6,7 +6,7 @@
 /*   By: marioro2 <marioro2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 17:55:17 by marioro2          #+#    #+#             */
-/*   Updated: 2025/04/17 19:10:58 by marioro2         ###   ########.fr       */
+/*   Updated: 2025/04/21 15:28:43 by marioro2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	size_t	totalsize;
 	void	*ptr;
 
-	
 	totalsize = nmemb * size;
 	if (totalsize / nmemb != size)
 		return (NULL);

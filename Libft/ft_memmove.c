@@ -6,7 +6,7 @@
 /*   By: marioro2 <marioro2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 04:07:10 by marioro2          #+#    #+#             */
-/*   Updated: 2025/04/21 11:11:13 by marioro2         ###   ########.fr       */
+/*   Updated: 2025/04/21 18:31:33 by marioro2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ void	*ft_memmove(void *dst, const void *src, size_t n)
 // 	}
 // 	retval[i] = '\0';
 // 	return retval;
-
 // }
 // void test(void *(*func)(void *, const void *, size_t ))
 // {
@@ -66,7 +65,5 @@ void	*ft_memmove(void *dst, const void *src, size_t n)
 // 	printf("Base func\n");
 // 	test(memmove);
 // 	printf("My func\n");
-
 // 	test(ft_memmove);
 // }
-// do bytes have changing adresses
