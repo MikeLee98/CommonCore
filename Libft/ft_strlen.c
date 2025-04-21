@@ -6,7 +6,7 @@
 /*   By: marioro2 <marioro2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 10:36:46 by marioro2          #+#    #+#             */
-/*   Updated: 2025/04/16 14:54:01 by marioro2         ###   ########.fr       */
+/*   Updated: 2025/04/21 11:17:10 by marioro2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,11 @@
 
 size_t	ft_strlen(const char *s)
 {
-	size_t	strlen;
+	size_t	i;
 
-	strlen = 0;
-	while (s[strlen])
-	{
-		strlen++;
-	}
-	return (strlen);
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
 }
 

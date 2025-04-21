@@ -6,39 +6,30 @@
 /*   By: marioro2 <marioro2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 04:07:10 by marioro2          #+#    #+#             */
-/*   Updated: 2025/04/16 18:17:36 by marioro2         ###   ########.fr       */
+/*   Updated: 2025/04/21 11:11:13 by marioro2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dest, const void *src, size_t n)
+void	*ft_memmove(void *dst, const void *src, size_t n)
 {
-	unsigned char	*cpy;
-	const unsigned char	*str;
+	unsigned char	*tmp_dst;
+	const unsigned char	*tmp_src;
 	size_t	i;
 
-	cpy = (unsigned char *)dest;
-	str = (unsigned char *)src;
-	if (cpy < str || cpy >= str + n)
-	{
-		i = 0;
-		while (i < n)
-		{
-			cpy[i] = str[i];
-			i++;
-		}
-	}
+	if (!dst && !src)
+		return (dst);
+	tmp_dst = (unsigned char *)dst;
+	tmp_src = (unsigned char *)src;
+	i = 0;
+	if (tmp_dst > tmp_src)
+		while (n-- > 0)
+			tmp_dst[n] = tmp_src[n];
 	else 
-	{
-		i = n;
-		while (i > 0)
-		{
-			cpy[i - 1] = str[i - 1];
-			i--;
-		}
-	}
-	return (dest);
+		while (i++ < n)
+			tmp_dst[i] = tmp_src[i];
+	return (dst);
 }
 
 // char *createstr(char * str)
@@ -63,7 +54,7 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 // 	char *str2 = createstr(str);
 // 	int len = strlen(str);
 // 	src  = &(str2[0]);
-// 	dest = &(src[1]);
+// 	dest = &(src[2]);
 	
 // 	printf("src (%s)\n", src);
 // 	printf("dest (%s)\n", dest);
@@ -77,5 +68,5 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 // 	printf("My func\n");
 
 // 	test(ft_memmove);
-	
 // }
+// do bytes have changing adresses

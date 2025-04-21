@@ -6,7 +6,7 @@
 /*   By: marioro2 <marioro2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 02:51:07 by marioro2          #+#    #+#             */
-/*   Updated: 2025/04/14 14:26:06 by marioro2         ###   ########.fr       */
+/*   Updated: 2025/04/21 11:30:42 by marioro2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,15 @@
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
-	size_t	i;
+	size_t	src_len;
 
-	i = 0;
-	while (i < size)
+	src_len = ft_strlen(src);
+	if (src_len + 1 < size)
+		ft_memcpy(dst, src, src_len + 1);
+	else if (size != 0)
 	{
-		dst[i] = src[i];
-		i++;
+		ft_memcpy(dst, src, size - 1);
 	}
-	dst[i] = '\0';
-	return (strlen(src));
+	dst[size - 1] = 0;
+	return (src_len);
 }

@@ -6,7 +6,7 @@
 /*   By: marioro2 <marioro2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 14:54:05 by marioro2          #+#    #+#             */
-/*   Updated: 2025/04/15 15:42:19 by marioro2         ###   ########.fr       */
+/*   Updated: 2025/04/21 12:44:23 by marioro2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,35 @@
 
 size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
-	size_t dstlen = ft_strlen(dst);
-	size_t srclen = ft_strlen(src);
-	size_t i;
-	size_t j;
+	size_t dst_len = ft_strlen(dst);
+	size_t src_len = ft_strlen(src);
+	// size_t i;
+	// size_t j;
 
-	i = 0;
-	j = dstlen;
-	if (j >= size)
-		return (size + srclen);
-	while (src[i] && j + 1 < size)
+	// i = 0;
+	// j = dstlen;
+	// if (j >= size)
+	// 	return (size + srclen);
+	// while (src[i] && j + 1 < size)
+	// {
+	// 	dst[j] = src[i];
+	// 	j++;
+	// 	i++;
+	// }
+	// dst[j] = '\0';
+	// return (dstlen + srclen);
+	if (dst_len >= size)
+		dst_len + size;
+	if (dst_len == size)
+		return (size + src_len);
+	if (src_len < size - dst_len)
+		ft_memcpy(dst + dst_len, src, src_len + 1);
+	else
 	{
-		dst[j] = src[i];
-		j++;
-		i++;
+		ft_memcpy(dst + dst_len, src, size - dst_len - 1);
+		dst[size - 1] = 0;
 	}
-	dst[j] = '\0';
-	return (dstlen + srclen);
+	return (dst_len + src_len);
 }
 
 // int main() 
