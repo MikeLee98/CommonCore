@@ -1,32 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/14 16:04:52 by marioro2          #+#    #+#             */
-/*   Updated: 2025/04/23 16:27:30 by mario            ###   ########.fr       */
+/*   Created: 2025/05/01 13:10:13 by mario             #+#    #+#             */
+/*   Updated: 2025/05/01 13:25:00 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strchr(const char *s, int c)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	while (*s)
-	{
-		if (*s == (char)c)
-			return ((char *)s);
-		s++;
-	}
-	if ((char)c == 0)
-		return ((char *)s);
-	return (NULL);
-}
+	t_list	*new_lst;
+	t_list	*new_obj;
 
-// int	main()
-// {
-// 	char *str = "hello world";
-// 	printf("%li\n", ft_strchr(str, 111) - str + 1);
-// }
+	if (!lst || !f || !del)
+		return (NULL);
+	new_lst = NULL;
+	while (lst)
+	{
+		new_obj = ft_lstnew(f(lst->content));
+		if (!new_obj)
+		{
+			ft_lstclear(&new_lst, del);
+			return (NULL);
+		}
+		ft_lstadd_back(&new_lst, new_obj);
+		lst = lst->next;
+	}
+	return (new_lst);
+}

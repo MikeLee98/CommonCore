@@ -1,30 +1,54 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/17 17:55:17 by marioro2          #+#    #+#             */
-/*   Updated: 2025/04/23 19:57:24 by mario            ###   ########.fr       */
+/*   Created: 2025/04/26 12:16:19 by mario             #+#    #+#             */
+/*   Updated: 2025/04/29 16:17:11 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t nmemb, size_t size)
+static int	int_len(long nbr)
 {
-	void	*ptr;
-	size_t	i;
+	int	i;
 
-	if (nmemb == 0 || size == 0)
-		return (malloc(0));
-	i = nmemb * size;
-	if (i / nmemb != size)
+	i = 0;
+	if (nbr <= 0)
+		i = 1;
+	while (nbr != 0)
+	{
+		nbr /= 10;
+		i++;
+	}
+	return (i);
+}
+
+char	*ft_itoa(int n)
+{
+	long	num;
+	int		len;
+	char	*str;
+
+	num = n;
+	len = int_len(num);
+	str = ft_calloc(len + 1, sizeof(char));
+	if (!str)
 		return (NULL);
-	ptr = malloc(i);
-	if (!ptr)
-		return (NULL);
-	ft_memset(ptr, 0, i);
-	return (ptr);
+	if (num == 0)
+		str[0] = '0';
+	if (num < 0)
+	{
+		str[0] = '-';
+		num = -num;
+	}
+	while (num)
+	{
+		str[--len] = (num % 10) + '0';
+		num = num / 10;
+	}
+	return (str);
 }

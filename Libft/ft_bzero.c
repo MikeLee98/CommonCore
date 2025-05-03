@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marioro2 <marioro2@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 16:50:19 by marioro2          #+#    #+#             */
-/*   Updated: 2025/04/21 11:15:57 by marioro2         ###   ########.fr       */
+/*   Updated: 2025/04/24 14:08:22 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_bzero(void *ptr, size_t n)
 	unsigned char	*tmp_ptr;
 
 	tmp_ptr = (unsigned char *)ptr;
-	while (n-- > 0)
+	while (n--)
 		*(tmp_ptr++) = '\0';
 }
 
