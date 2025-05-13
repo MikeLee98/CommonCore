@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marioro2 <marioro2@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 10:36:24 by marioro2          #+#    #+#             */
-/*   Updated: 2025/05/01 17:38:04 by marioro2         ###   ########.fr       */
+/*   Updated: 2025/05/01 13:29:07 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#ifndef		LIBFT_H
+# define	LIBFT_H
 
 # include <stdio.h>
 # include <ctype.h>

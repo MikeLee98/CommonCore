@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marioro2 <marioro2@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 16:46:25 by marioro2          #+#    #+#             */
-/*   Updated: 2025/05/01 17:35:44 by marioro2         ###   ########.fr       */
+/*   Updated: 2025/04/23 17:39:18 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char	*ft_strrchr(const char *s, int c)
 		s++;
 	}
 	if (*s == (char)c)
-		ptr = (char *)s;
+			ptr = (char *)s;
 	return (ptr);
 }
 

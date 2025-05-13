@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_toupper.c                                       :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marioro2 <marioro2@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/14 15:40:47 by marioro2          #+#    #+#             */
-/*   Updated: 2025/05/01 17:36:57 by marioro2         ###   ########.fr       */
+/*   Created: 2025/04/17 18:13:42 by marioro2          #+#    #+#             */
+/*   Updated: 2025/04/23 20:09:56 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_toupper(int c)
+char	*ft_strdup(const char *s)
 {
-	if (c >= 'a' && c <= 'z')
-		return (c & 0xDF);
-	return (c);
-}
+	size_t	len;
+	char	*copy;
 
-// int	main()
-// {
-// 	int c = 'c';
-// 	printf("%c", ft_toupper(c));
-// }
+	if (s == NULL)
+		return (NULL);
+	len = ft_strlen(s) + 1;
+	copy = malloc(len);
+	if (copy == NULL)
+		return (NULL);
+	ft_memcpy(copy, s, len);
+	return (copy);
+}

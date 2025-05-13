@@ -1,28 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
+/*   ft_printf_format.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marioro2 <marioro2@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/01 12:52:28 by mario             #+#    #+#             */
-/*   Updated: 2025/05/01 18:11:44 by marioro2         ###   ########.fr       */
+/*   Created: 2025/05/13 13:55:19 by mario             #+#    #+#             */
+/*   Updated: 2025/05/13 15:02:27 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-void	ft_lstadd_back(t_list **lst, t_list *new)
+int	print_char(char c)
 {
-	t_list	*last;
+	return (write(1, &c, 1));
+}
 
-	if (!lst || !new)
-		return ;
-	if (!*lst)
+int	print_str(char *str)
+{
+	int	count;
+
+	count = 0;
+	while (str)
 	{
-		*lst = new;
-		return ;
+		count += write(1, str, 1);
+		str++;
 	}
-	last = ft_lstlast(*lst);
-	last->next = new;
+	return (count);
 }
