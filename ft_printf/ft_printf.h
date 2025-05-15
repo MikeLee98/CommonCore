@@ -1,31 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_format.c                                 :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/13 13:55:19 by mario             #+#    #+#             */
-/*   Updated: 2025/05/13 15:02:27 by mario            ###   ########.fr       */
+/*   Created: 2025/05/14 16:06:35 by mario             #+#    #+#             */
+/*   Updated: 2025/05/14 18:24:51 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
-int	print_char(char c)
-{
-	return (write(1, &c, 1));
-}
+# include <unistd.h>
+# include <stdarg.h>
+# include <stdlib.h>
 
-int	print_str(char *str)
-{
-	int	count;
+int	ft_printf(const char *format, ...);
 
-	count = 0;
-	while (str)
-	{
-		count += write(1, str, 1);
-		str++;
-	}
-	return (count);
-}
+#endif
