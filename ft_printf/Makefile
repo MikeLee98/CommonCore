@@ -6,11 +6,12 @@
 #    By: mario <mario@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/14 20:37:51 by mario             #+#    #+#              #
-#    Updated: 2025/05/14 22:05:45 by mario            ###   ########.fr        #
+#    Updated: 2025/05/15 14:04:55 by mario            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS=ft_printf.c ft_printf_utils.c
+SRCS=ft_printf.c ft_printf_putchar.c ft_printf_putstr.c ft_printf_putnbr.c \
+ft_printf_putunsigned.c ft_printf_puthex.c ft_printf_putptr.c
 OBJS=$(SRCS:.c=.o)
 
 CC=cc
@@ -26,7 +27,7 @@ $(NAME): $(OBJS)
 %.o: %.c
 	$(CC) $(CFLAGS) $@ $<
 
-clean: 
+clean:
 	rm -f $(OBJS)
 
 fclean: clean

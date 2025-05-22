@@ -1,29 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_printf_puthex.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/14 16:06:35 by mario             #+#    #+#             */
-/*   Updated: 2025/05/15 13:43:45 by mario            ###   ########.fr       */
+/*   Created: 2025/05/15 13:56:54 by mario             #+#    #+#             */
+/*   Updated: 2025/05/15 14:00:10 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
 
-# include <unistd.h>
-# include <stdarg.h>
-# include <stdlib.h>
+int	ft_puthex(unsigned long n, int upper)
+{
+	char	*base;
+	char	c;
 
-int	ft_printf(const char *format, ...);
-int	sort_format(char c, va_list args);
-int	ft_putchar(char c);
-int	ft_putstr(char *str);
-int	ft_putnbr(int n);
-int	ft_putunsigned(int n);
-int	ft_puthex(unsigned long n, int upper);
-int	ft_putptr(void *ptr);
-
-#endif
+	if (upper)
+		base = "0123456789ABCDEF";
+	else
+		base = "0123456789abcdef";
+	if (n >= 16)
+		return (ft_puthex(n / 16, upper) + ft_puthex(n % 16, upper));
+	c = base[n % 16];
+	return (write(1, &c, 1));
+}

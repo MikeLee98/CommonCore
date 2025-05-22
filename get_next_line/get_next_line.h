@@ -1,29 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/14 16:06:35 by mario             #+#    #+#             */
-/*   Updated: 2025/05/15 13:43:45 by mario            ###   ########.fr       */
+/*   Created: 2025/05/19 13:50:19 by mario             #+#    #+#             */
+/*   Updated: 2025/05/22 02:59:11 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-# include <unistd.h>
-# include <stdarg.h>
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 10
+# endif
+
 # include <stdlib.h>
+# include <unistd.h>
+# include <fcntl.h>
 
-int	ft_printf(const char *format, ...);
-int	sort_format(char c, va_list args);
-int	ft_putchar(char c);
-int	ft_putstr(char *str);
-int	ft_putnbr(int n);
-int	ft_putunsigned(int n);
-int	ft_puthex(unsigned long n, int upper);
-int	ft_putptr(void *ptr);
+char	*get_next_line(int fd);
 
 #endif

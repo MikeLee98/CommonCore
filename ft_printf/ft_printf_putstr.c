@@ -1,29 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_printf_putstr.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/14 16:06:35 by mario             #+#    #+#             */
-/*   Updated: 2025/05/15 13:43:45 by mario            ###   ########.fr       */
+/*   Created: 2025/05/15 13:54:16 by mario             #+#    #+#             */
+/*   Updated: 2025/05/15 13:54:29 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
 
-# include <unistd.h>
-# include <stdarg.h>
-# include <stdlib.h>
+int	ft_putstr(char *str)
+{
+	int	len;
 
-int	ft_printf(const char *format, ...);
-int	sort_format(char c, va_list args);
-int	ft_putchar(char c);
-int	ft_putstr(char *str);
-int	ft_putnbr(int n);
-int	ft_putunsigned(int n);
-int	ft_puthex(unsigned long n, int upper);
-int	ft_putptr(void *ptr);
-
-#endif
+	if (!str)
+		return (write(1, "(null)", 6));
+	len = 0;
+	while (str[len])
+		len++;
+	return (write(1, str, len));
+}

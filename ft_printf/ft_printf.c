@@ -6,13 +6,13 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 16:05:40 by mario             #+#    #+#             */
-/*   Updated: 2025/05/14 22:40:25 by mario            ###   ########.fr       */
+/*   Updated: 2025/05/16 14:36:53 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	sort_format(char c, va_list args)
+int	sort_format(char c, va_list args)
 {
 	if (c == 'c')
 		return (ft_putchar(va_arg(args, int)));
@@ -38,22 +38,18 @@ int	ft_printf(const char *format, ...)
 	va_list	args;
 	int		i;
 	int		count;
-	int		printvalue;
 
 	va_start(args, format);
 	i = -1;
 	count = 0;
-	if (!format)
+	if (!format || write(1, "", 0) == -1)
 		return (-1);
 	while (format[++i])
 	{
-		if (format[i] == '%')
-		{
-			printvalue = sort_format(format[++i], args);
-			if (printvalue < 0)
-				return (printvalue);
-			count += printvalue;
-		}
+		if (format[i] == '%' && format[i + 1])
+			count += sort_format(format[++i], args);
+		else if (format[i] == '%')
+			return (-1);
 		else
 			count += write(1, &format[i], 1);
 	}

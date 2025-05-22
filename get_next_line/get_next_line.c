@@ -1,29 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/14 16:06:35 by mario             #+#    #+#             */
-/*   Updated: 2025/05/15 13:43:45 by mario            ###   ########.fr       */
+/*   Created: 2025/05/19 13:49:51 by mario             #+#    #+#             */
+/*   Updated: 2025/05/22 03:06:49 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "get_next_line.h"
 
-# include <unistd.h>
-# include <stdarg.h>
-# include <stdlib.h>
-
-int	ft_printf(const char *format, ...);
-int	sort_format(char c, va_list args);
-int	ft_putchar(char c);
-int	ft_putstr(char *str);
-int	ft_putnbr(int n);
-int	ft_putunsigned(int n);
-int	ft_puthex(unsigned long n, int upper);
-int	ft_putptr(void *ptr);
-
-#endif
+char	*get_next_line(int fd)
+{
+	//this func is just fgets(3) 
+	//that only takes a file descriptor as a parameter
+}

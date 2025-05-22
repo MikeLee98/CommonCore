@@ -1,29 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_printf_putunsigned.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/14 16:06:35 by mario             #+#    #+#             */
-/*   Updated: 2025/05/15 13:43:45 by mario            ###   ########.fr       */
+/*   Created: 2025/05/15 13:56:11 by mario             #+#    #+#             */
+/*   Updated: 2025/05/15 13:59:53 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
 
-# include <unistd.h>
-# include <stdarg.h>
-# include <stdlib.h>
+int	ft_putunsigned(int n)
+{
+	long	nb;
+	char	c;
 
-int	ft_printf(const char *format, ...);
-int	sort_format(char c, va_list args);
-int	ft_putchar(char c);
-int	ft_putstr(char *str);
-int	ft_putnbr(int n);
-int	ft_putunsigned(int n);
-int	ft_puthex(unsigned long n, int upper);
-int	ft_putptr(void *ptr);
-
-#endif
+	nb = n;
+	if (nb >= 10)
+		return (ft_putnbr(nb / 10) + ft_putnbr(nb % 10));
+	c = nb + '0';
+	return (write(1, &c, 1));
+}
