@@ -1,6 +1,10 @@
 {
 	"files.associations": {
 		"stdarg.h": "c",
-		"algorithm": "c"
+		"algorithm": "c",
+		"stdlib.h": "c",
+		"sstream": "c",
+		"get_next_line.h": "c",
+		"fcntl.h": "c"
 	}
 }

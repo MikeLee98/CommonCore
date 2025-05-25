@@ -6,43 +6,95 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 13:50:06 by mario             #+#    #+#             */
-/*   Updated: 2025/05/22 03:04:03 by mario            ###   ########.fr       */
+/*   Updated: 2025/05/25 05:04:48 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <fcntl.h>
-#include <stdio.h>
+#include "get_next_line.h"
 
-char *ft_get_line(char *buf, int size, int fd)
+static size_t	ft_strlen(const char *str)
 {
-	int i = 0;
-	char c;
-	ssize_t bytes_read;
+	size_t	i;
 
-	if (size <= 0 || !buf)
-		return NULL;
-
-	while (i < size - 1)
-	{
-		bytes_read = read(fd, &c, 1);
-		if (bytes_read <= 0)
-			break;
-		buf[i++] = c;
-		if (c == '\n')
-			break;
-	}
-	buf[i] = '\0';
-	if (i == 0 && bytes_read <= 0)
-		return NULL;
-	return buf;
+	if (!str)
+		return (0);
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
 }
 
-int main(void)
+char	*ft_strjoin(char *s1, char const *s2)
 {
-	char buffer[10];
-	int	fd = open("text.txt", O_RDONLY);
-	while (ft_get_line(buffer, sizeof(buffer), fd) != NULL)
-		printf("%s", buffer);
-	return 0;
+	size_t	i;
+	size_t	j;
+	size_t	len;
+	char	*str;
+
+	i = 0;
+	j = 0;
+	len = ft_strlen(s1) + ft_strlen(s2);
+	str = malloc((len + 1) * sizeof(char));
+	if (!str)
+		return (free(s1), NULL);
+	while (s1 && s1[i])
+		str[i] = s1[j++];
+	j = 0;
+	while (s2 && s2[j])
+		str[i++] = s2[j++];
+	str[i] = '\0';
+	free(s1);
+	return (str);
+}
+
+int	check_newline(char *buffer)
+{
+	int	i;
+
+	i = -1;
+	while (buffer[++i])
+	{
+		if (buffer[i] == '\n')
+			return (1);
+	}
+	return (0);
+}
+
+void	read_to_buffer(int fd, char **line, char *buffer)
+{
+	int	bytes_read;
+
+	bytes_read = 0;
+	if (buffer[0])
+		*line = ft_strjoin(*line, buffer);
+	while (!check_newline(buffer))
+	{
+		bytes_read = read(fd, buffer, BUFFER_SIZE);
+		if (bytes_read < 1)
+			break ;
+		buffer[bytes_read] = '\0';
+		*line = ft_strjoin(*line, buffer);
+	}
+	if (bytes_read == -1)
+	{
+		free(*line);
+		*line = NULL;
+		buffer[0] = '\0';
+	}
+}
+
+void	trim_buffer(char *buffer)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while (buffer[i] && buffer[i] != '\n')
+		i++;
+	if (buffer[i] == '\n')
+		i++;
+	while (buffer[i])
+		buffer[j++] = buffer[i++];
+	buffer[j] = '\0';
 }
