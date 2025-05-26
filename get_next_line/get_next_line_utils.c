@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
+/*   By: marioro2 <marioro2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 13:50:06 by mario             #+#    #+#             */
-/*   Updated: 2025/05/25 05:04:48 by mario            ###   ########.fr       */
+/*   Updated: 2025/05/26 17:28:41 by marioro2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-static size_t	ft_strlen(const char *str)
+size_t	ft_strlen(const char *str)
 {
 	size_t	i;
 
@@ -38,7 +38,7 @@ char	*ft_strjoin(char *s1, char const *s2)
 	if (!str)
 		return (free(s1), NULL);
 	while (s1 && s1[i])
-		str[i] = s1[j++];
+		str[i++] = s1[j++];
 	j = 0;
 	while (s2 && s2[j])
 		str[i++] = s2[j++];

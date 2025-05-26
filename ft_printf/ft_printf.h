@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
+/*   By: marioro2 <marioro2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 16:06:35 by mario             #+#    #+#             */
-/*   Updated: 2025/05/15 13:43:45 by mario            ###   ########.fr       */
+/*   Updated: 2025/05/26 16:09:20 by marioro2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	sort_format(char c, va_list args);
 int	ft_putchar(char c);
 int	ft_putstr(char *str);
 int	ft_putnbr(int n);
-int	ft_putunsigned(int n);
+int	ft_putunsigned(unsigned int n);
 int	ft_puthex(unsigned long n, int upper);
 int	ft_putptr(void *ptr);
 

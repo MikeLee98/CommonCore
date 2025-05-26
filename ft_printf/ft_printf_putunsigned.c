@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf_putunsigned.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
+/*   By: marioro2 <marioro2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 13:56:11 by mario             #+#    #+#             */
-/*   Updated: 2025/05/15 13:59:53 by mario            ###   ########.fr       */
+/*   Updated: 2025/05/26 16:14:25 by marioro2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putunsigned(int n)
+int	ft_putunsigned(unsigned int n)
 {
 	long	nb;
 	char	c;

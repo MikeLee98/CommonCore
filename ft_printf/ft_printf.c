@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
+/*   By: marioro2 <marioro2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 16:05:40 by mario             #+#    #+#             */
-/*   Updated: 2025/05/16 14:36:53 by mario            ###   ########.fr       */
+/*   Updated: 2025/05/26 15:29:29 by marioro2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	sort_format(char c, va_list args)
 	if (c == 'c')
 		return (ft_putchar(va_arg(args, int)));
 	else if (c == 's')
-		return (ft_putstr(va_arg(args,char *)));
+		return (ft_putstr(va_arg(args, char *)));
 	else if (c == 'd' || c == 'i')
 		return (ft_putnbr(va_arg(args, int)));
 	else if (c == 'u')

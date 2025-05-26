@@ -3,19 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
+/*   By: marioro2 <marioro2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 13:49:51 by mario             #+#    #+#             */
-/*   Updated: 2025/05/25 05:05:06 by mario            ###   ########.fr       */
+/*   Updated: 2025/05/26 17:32:05 by marioro2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include "get_next_line.h"
-
-#ifndef BUFFER_SIZE
-# define BUFFER_SIZE 10
-#endif
 
 char	*get_next_line(int fd)
 {
@@ -40,8 +36,19 @@ char	*get_next_line(int fd)
 	return (line);
 }
 
-int	main()
-{
-	int	fd = open ("text.txt", O_RDONLY);
-	printf("%s", get_next_line(fd));
-}
+// int	main()
+// {
+// 	int		fd = open ("get_next_line.h", O_RDONLY);
+// 	char	*line;
+
+// 	line = NULL;
+// 	line = get_next_line(fd);
+// 	printf("%s", line);
+// 	free(line);
+// 	// while ((line = get_next_line(fd)))
+// 	// {
+// 	// 	printf("%s", line);
+// 	// 	free(line);
+// 	// }
+// 	close(fd);
+// }
