@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 13:55:20 by mario             #+#    #+#             */
-/*   Updated: 2025/05/15 13:59:29 by mario            ###   ########.fr       */
+/*   Updated: 2025/06/02 01:01:45 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,22 @@
 
 int	ft_putnbr(int n)
 {
+	int		count;
 	long	nb;
-	char	c;
 
+	count = 0;
 	nb = n;
 	if (nb < 0)
 	{
-		return (write(1, "-", 1) + ft_putnbr(-nb));
+		count += ft_putchar('-');
+		nb = -nb;
 	}
 	if (nb >= 10)
-		return (ft_putnbr(nb / 10) + ft_putnbr(nb % 10));
-	c = nb + '0';
-	return (write(1, &c, 1));
+	{
+		count += ft_putnbr(nb / 10);
+		count += ft_putnbr(nb % 10);
+	}
+	else
+		count += ft_putchar(nb + '0');
+	return (count);
 }
