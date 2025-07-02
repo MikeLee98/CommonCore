@@ -6,7 +6,7 @@
 /*   By: marioro2 <marioro2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 13:50:19 by mario             #+#    #+#             */
-/*   Updated: 2025/05/26 17:31:48 by marioro2         ###   ########.fr       */
+/*   Updated: 2025/06/07 14:26:28 by marioro2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define GET_NEXT_LINE_H
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 10
+#  define BUFFER_SIZE 1000
 # endif
 
 # include <stdlib.h>

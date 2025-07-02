@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
+/*   By: marioro2 <marioro2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 16:05:40 by mario             #+#    #+#             */
-/*   Updated: 2025/06/02 01:13:01 by mario            ###   ########.fr       */
+/*   Updated: 2025/06/11 17:43:53 by marioro2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ int	sort_format(char c, va_list args)
 	else if (c == 'u')
 		return (ft_putunsigned(va_arg(args, unsigned int)));
 	else if (c == 'x')
-		return (ft_puthex(va_arg(args, unsigned long), 0));
+		return (ft_puthex(va_arg(args, unsigned int), 0));
 	else if (c == 'X')
-		return (ft_puthex(va_arg(args, unsigned long), 1));
+		return (ft_puthex(va_arg(args, unsigned int), 1));
 	else if (c == 'p')
 		return (ft_putptr(va_arg(args, void *)));
 	else if (c == '%')
