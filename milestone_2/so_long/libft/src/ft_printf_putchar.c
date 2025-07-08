@@ -1,31 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_printf_putchar.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marioro2 <marioro2@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/08 17:10:40 by marioro2          #+#    #+#             */
-/*   Updated: 2025/07/08 17:33:12 by marioro2         ###   ########.fr       */
+/*   Created: 2025/05/13 13:55:19 by mario             #+#    #+#             */
+/*   Updated: 2025/05/15 14:00:22 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/so_long.h"
+#include "ft_printf.h"
 
-void	print_error(char *msg)
+int	ft_putchar(char c)
 {
-	write(2, "Error\n", 6);
-	write(2, msg, strlen(msg));
-	exit(1);
-}
-
-void	free_map(char **map)
-{
-	int i = 0;
-	
-	if (!map)
-		return ;
-	while (map[i])
-		free(map[i++]);
-	free(map);
+	return (write(1, &c, 1));
 }

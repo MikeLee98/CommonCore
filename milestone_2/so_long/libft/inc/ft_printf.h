@@ -1,37 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marioro2 <marioro2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/19 13:49:51 by mario             #+#    #+#             */
-/*   Updated: 2025/07/08 17:47:28 by marioro2         ###   ########.fr       */
+/*   Created: 2025/05/14 16:06:35 by mario             #+#    #+#             */
+/*   Updated: 2025/06/07 16:38:41 by marioro2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "../inc/get_next_line.h"
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
-char	*get_next_line(int fd)
-{
-	static char	buffer[BUFFER_SIZE + 1];
-	char		*line;
-	int			i;
+# include <unistd.h>
+# include <stdarg.h>
+# include <stdlib.h>
 
-	if (fd < 0 || BUFFER_SIZE <= 0)
-		return (NULL);
-	i = 0;
-	line = NULL;
-	read_to_buffer(fd, &line, buffer);
-	if (line)
-	{
-		while (line[i] && line[i] != '\n')
-			i++;
-		if (line[i] == '\n')
-			i++;
-		line[i] = '\0';
-	}
-	trim_buffer(buffer);
-	return (line);
-}
+int	ft_printf(const char *format, ...);
+int	sort_format(char c, va_list args);
+int	ft_putchar(char c);
+int	ft_putstr(char *str);
+int	ft_putnbr(int n);
+int	ft_putunsigned(unsigned int n);
+int	ft_puthex(unsigned long n, int upper);
+int	ft_putptr(void *ptr);
+
+#endif

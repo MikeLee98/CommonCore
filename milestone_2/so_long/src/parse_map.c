@@ -6,11 +6,11 @@
 /*   By: marioro2 <marioro2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 16:15:37 by marioro2          #+#    #+#             */
-/*   Updated: 2025/07/08 16:45:16 by marioro2         ###   ########.fr       */
+/*   Updated: 2025/07/08 17:44:13 by marioro2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../inc/so_long.h"
 
 static int	check_extension(char *file)
 {
@@ -33,7 +33,7 @@ void	parse_map(t_game *game, char *filename)
 	
 	while ((line = get_next_line(fd)))
 	{
-		full = strjoin_gnl(full, line);
+		full = gnl_strjoin(full, line);
 		free(line);
 		game->height++;
 	}

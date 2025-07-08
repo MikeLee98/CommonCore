@@ -1,37 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   ft_printf_puthex.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marioro2 <marioro2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/19 13:49:51 by mario             #+#    #+#             */
-/*   Updated: 2025/07/08 17:47:28 by marioro2         ###   ########.fr       */
+/*   Created: 2025/05/15 13:56:54 by mario             #+#    #+#             */
+/*   Updated: 2025/06/07 16:38:05 by marioro2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "../inc/get_next_line.h"
+#include "ft_printf.h"
 
-char	*get_next_line(int fd)
+int	ft_puthex(unsigned long n, int upper)
 {
-	static char	buffer[BUFFER_SIZE + 1];
-	char		*line;
-	int			i;
+	char	*base;
+	char	c;
 
-	if (fd < 0 || BUFFER_SIZE <= 0)
-		return (NULL);
-	i = 0;
-	line = NULL;
-	read_to_buffer(fd, &line, buffer);
-	if (line)
-	{
-		while (line[i] && line[i] != '\n')
-			i++;
-		if (line[i] == '\n')
-			i++;
-		line[i] = '\0';
-	}
-	trim_buffer(buffer);
-	return (line);
+	if (upper)
+		base = "0123456789ABCDEF";
+	else
+		base = "0123456789abcdef";
+	if (n >= 16)
+		return (ft_puthex(n / 16, upper) + ft_puthex(n % 16, upper));
+	c = base[n % 16];
+	return (write(1, &c, 1));
 }

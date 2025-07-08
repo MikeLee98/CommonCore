@@ -1,31 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marioro2 <marioro2@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/08 17:10:40 by marioro2          #+#    #+#             */
-/*   Updated: 2025/07/08 17:33:12 by marioro2         ###   ########.fr       */
+/*   Created: 2025/04/17 18:13:42 by marioro2          #+#    #+#             */
+/*   Updated: 2025/04/23 20:09:56 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/so_long.h"
+#include "libft.h"
 
-void	print_error(char *msg)
+char	*ft_strdup(const char *s)
 {
-	write(2, "Error\n", 6);
-	write(2, msg, strlen(msg));
-	exit(1);
-}
+	size_t	len;
+	char	*copy;
 
-void	free_map(char **map)
-{
-	int i = 0;
-	
-	if (!map)
-		return ;
-	while (map[i])
-		free(map[i++]);
-	free(map);
+	if (s == NULL)
+		return (NULL);
+	len = ft_strlen(s) + 1;
+	copy = malloc(len);
+	if (copy == NULL)
+		return (NULL);
+	ft_memcpy(copy, s, len);
+	return (copy);
 }

@@ -1,31 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marioro2 <marioro2@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/08 17:10:40 by marioro2          #+#    #+#             */
-/*   Updated: 2025/07/08 17:33:12 by marioro2         ###   ########.fr       */
+/*   Created: 2025/04/30 15:25:04 by mario             #+#    #+#             */
+/*   Updated: 2025/05/01 13:24:22 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/so_long.h"
+#include "libft.h"
 
-void	print_error(char *msg)
+void ft_lstadd_front(t_list **lst, t_list *new)
 {
-	write(2, "Error\n", 6);
-	write(2, msg, strlen(msg));
-	exit(1);
-}
-
-void	free_map(char **map)
-{
-	int i = 0;
-	
-	if (!map)
-		return ;
-	while (map[i])
-		free(map[i++]);
-	free(map);
+	new->next = *lst;
+	*lst = new;
 }

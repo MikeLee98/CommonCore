@@ -6,13 +6,13 @@
 /*   By: marioro2 <marioro2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 13:50:06 by mario             #+#    #+#             */
-/*   Updated: 2025/05/26 17:28:41 by marioro2         ###   ########.fr       */
+/*   Updated: 2025/07/08 17:47:18 by marioro2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "../inc/get_next_line.h"
 
-size_t	ft_strlen(const char *str)
+size_t	strlen_gnl(const char *str)
 {
 	size_t	i;
 
@@ -24,7 +24,7 @@ size_t	ft_strlen(const char *str)
 	return (i);
 }
 
-char	*ft_strjoin(char *s1, char const *s2)
+char	*gnl_strjoin(char *s1, char const *s2)
 {
 	size_t	i;
 	size_t	j;

@@ -1,31 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marioro2 <marioro2@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/08 17:10:40 by marioro2          #+#    #+#             */
-/*   Updated: 2025/07/08 17:33:12 by marioro2         ###   ########.fr       */
+/*   Created: 2025/04/30 18:16:11 by mario             #+#    #+#             */
+/*   Updated: 2025/05/01 13:24:53 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/so_long.h"
+#include "libft.h"
 
-void	print_error(char *msg)
+int	ft_lstsize(t_list *lst)
 {
-	write(2, "Error\n", 6);
-	write(2, msg, strlen(msg));
-	exit(1);
-}
+	t_list 			*tmp;
+	unsigned int	i;
 
-void	free_map(char **map)
-{
-	int i = 0;
-	
-	if (!map)
-		return ;
-	while (map[i])
-		free(map[i++]);
-	free(map);
+	tmp = lst;
+	i = 0;
+	while (tmp)
+	{
+		tmp = tmp->next;
+		i++;
+	}
+	return (i);
 }

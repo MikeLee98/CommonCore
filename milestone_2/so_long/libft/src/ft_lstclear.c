@@ -1,31 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marioro2 <marioro2@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/08 17:10:40 by marioro2          #+#    #+#             */
-/*   Updated: 2025/07/08 17:33:12 by marioro2         ###   ########.fr       */
+/*   Created: 2025/05/01 13:00:08 by mario             #+#    #+#             */
+/*   Updated: 2025/05/01 13:25:09 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/so_long.h"
+#include "libft.h"
 
-void	print_error(char *msg)
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	write(2, "Error\n", 6);
-	write(2, msg, strlen(msg));
-	exit(1);
-}
+	t_list	*tmp;
 
-void	free_map(char **map)
-{
-	int i = 0;
-	
-	if (!map)
-		return ;
-	while (map[i])
-		free(map[i++]);
-	free(map);
+	while (*lst)
+	{
+		tmp = (*lst)->next;
+		ft_lstdelone(*lst, del);
+		*lst = tmp;
+	}
+	free(*lst);
+	*lst = NULL;
 }
