@@ -1,16 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marioro2 <marioro2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/04 19:06:44 by marioro2          #+#    #+#             */
-/*   Updated: 2025/07/04 19:07:26 by marioro2         ###   ########.fr       */
+/*   Created: 2025/07/04 19:06:13 by marioro2          #+#    #+#             */
+/*   Updated: 2025/07/08 16:14:43 by marioro2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#include "so_long.h"
 
-# include 
+
+
+int	main(int argc, char **argv)
+{
+	t_game game;
+	
+	if (argc != 2)
+		print_error("");
+
+	parse_map(&game, argv[1]);
+	
+	// temporario
+	for (int i = 0; game.map[i]; i++)
+		printf("%s\n", game.map[i]);
+
+	free_map(game.map);
+	return (0);
+}
