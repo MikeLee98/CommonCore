@@ -1,26 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_printf_putptr.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/04 19:06:13 by marioro2          #+#    #+#             */
-/*   Updated: 2025/08/08 17:23:08 by mario            ###   ########.fr       */
+/*   Created: 2025/05/15 13:58:38 by mario             #+#    #+#             */
+/*   Updated: 2025/08/02 17:47:04 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/so_long.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+int	ft_printf_putptr(void *ptr)
 {
-	t_game	game;
-
-	if (argc != 2)
-		exit_error("Uso: ./so_long mapa.ber");
-	read_map(argv[1], &game);
-	validate_map(&game);
-	validate_path(&game);
-	printf("Mapa válido! Dimensões: %d x %d\n", game.width, game.height);
-	return (0);
+	if (!ptr)
+		return (write(1, "(nil)", 5));
+	return (write(1, "0x", 2) + ft_printf_puthex((unsigned long)ptr, 0));
 }

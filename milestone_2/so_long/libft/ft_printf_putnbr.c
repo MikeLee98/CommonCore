@@ -1,20 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_putptr.c                                 :+:      :+:    :+:   */
+/*   ft_printf_putnbr.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/15 13:58:38 by mario             #+#    #+#             */
-/*   Updated: 2025/05/15 13:58:51 by mario            ###   ########.fr       */
+/*   Created: 2025/06/02 01:07:25 by mario             #+#    #+#             */
+/*   Updated: 2025/08/02 17:47:11 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_putptr(void *ptr)
+int	ft_printf_putnbr(int n)
 {
-	if (!ptr)
-		return (write(1, "(nil)", 5));
-	return (write(1, "0x", 2) + ft_puthex((unsigned long)ptr, 0));
+	int		count;
+	long	nb;
+
+	count = 0;
+	nb = n;
+	if (nb < 0)
+	{
+		count += ft_printf_putchar('-');
+		nb = -nb;
+	}
+	if (nb >= 10)
+	{
+		count += ft_printf_putnbr(nb / 10);
+		count += ft_printf_putnbr(nb % 10);
+	}
+	else
+		count += ft_printf_putchar(nb + '0');
+	return (count);
 }

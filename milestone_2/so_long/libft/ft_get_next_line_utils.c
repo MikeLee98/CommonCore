@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   ft_get_next_line_utils.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marioro2 <marioro2@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 13:50:06 by mario             #+#    #+#             */
-/*   Updated: 2025/07/08 17:47:18 by marioro2         ###   ########.fr       */
+/*   Updated: 2025/08/02 17:49:04 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/get_next_line.h"
+#include "libft.h"
 
-size_t	strlen_gnl(const char *str)
+size_t	ft_gnl_strlen(const char *str)
 {
 	size_t	i;
 
@@ -24,7 +24,7 @@ size_t	strlen_gnl(const char *str)
 	return (i);
 }
 
-char	*gnl_strjoin(char *s1, char const *s2)
+char	*ft_gnl_strjoin(char *s1, char const *s2)
 {
 	size_t	i;
 	size_t	j;
@@ -33,7 +33,7 @@ char	*gnl_strjoin(char *s1, char const *s2)
 
 	i = 0;
 	j = 0;
-	len = ft_strlen(s1) + ft_strlen(s2);
+	len = ft_gnl_strlen(s1) + ft_gnl_strlen(s2);
 	str = malloc((len + 1) * sizeof(char));
 	if (!str)
 		return (free(s1), NULL);
@@ -47,7 +47,7 @@ char	*gnl_strjoin(char *s1, char const *s2)
 	return (str);
 }
 
-int	check_newline(char *buffer)
+int	ft_check_newline(char *buffer)
 {
 	int	i;
 
@@ -60,20 +60,20 @@ int	check_newline(char *buffer)
 	return (0);
 }
 
-void	read_to_buffer(int fd, char **line, char *buffer)
+void	ft_read_to_buffer(int fd, char **line, char *buffer)
 {
 	int	bytes_read;
 
 	bytes_read = 0;
 	if (buffer[0])
-		*line = ft_strjoin(*line, buffer);
-	while (!check_newline(buffer))
+		*line = ft_gnl_strjoin(*line, buffer);
+	while (!ft_check_newline(buffer))
 	{
 		bytes_read = read(fd, buffer, BUFFER_SIZE);
 		if (bytes_read < 1)
 			break ;
 		buffer[bytes_read] = '\0';
-		*line = ft_strjoin(*line, buffer);
+		*line = ft_gnl_strjoin(*line, buffer);
 	}
 	if (bytes_read == -1)
 	{
@@ -83,7 +83,7 @@ void	read_to_buffer(int fd, char **line, char *buffer)
 	}
 }
 
-void	trim_buffer(char *buffer)
+void	ft_trim_buffer(char *buffer)
 {
 	int	i;
 	int	j;

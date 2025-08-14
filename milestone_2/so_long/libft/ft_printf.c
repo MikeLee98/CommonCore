@@ -3,33 +3,33 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marioro2 <marioro2@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 16:05:40 by mario             #+#    #+#             */
-/*   Updated: 2025/06/11 17:43:53 by marioro2         ###   ########.fr       */
+/*   Updated: 2025/08/02 17:46:45 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	sort_format(char c, va_list args)
+int	ft_sort_format(char c, va_list args)
 {
 	if (c == 'c')
-		return (ft_putchar(va_arg(args, int)));
+		return (ft_printf_putchar(va_arg(args, int)));
 	else if (c == 's')
-		return (ft_putstr(va_arg(args, char *)));
+		return (ft_printf_putstr(va_arg(args, char *)));
 	else if (c == 'd' || c == 'i')
-		return (ft_putnbr(va_arg(args, int)));
+		return (ft_printf_putnbr(va_arg(args, int)));
 	else if (c == 'u')
-		return (ft_putunsigned(va_arg(args, unsigned int)));
+		return (ft_printf_putunsigned(va_arg(args, unsigned int)));
 	else if (c == 'x')
-		return (ft_puthex(va_arg(args, unsigned int), 0));
+		return (ft_printf_puthex(va_arg(args, unsigned int), 0));
 	else if (c == 'X')
-		return (ft_puthex(va_arg(args, unsigned int), 1));
+		return (ft_printf_puthex(va_arg(args, unsigned int), 1));
 	else if (c == 'p')
-		return (ft_putptr(va_arg(args, void *)));
+		return (ft_printf_putptr(va_arg(args, void *)));
 	else if (c == '%')
-		return (ft_putchar('%'));
+		return (ft_printf_putchar('%'));
 	return (-1);
 }
 
@@ -47,7 +47,7 @@ int	ft_printf(const char *format, ...)
 	while (format[++i])
 	{
 		if (format[i] == '%' && format[i + 1])
-			count += sort_format(format[++i], args);
+			count += ft_sort_format(format[++i], args);
 		else if (format[i] == '%')
 			return (-1);
 		else

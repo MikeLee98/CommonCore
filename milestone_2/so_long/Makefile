@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: marioro2 <marioro2@student.42.fr>          +#+  +:+       +#+         #
+#    By: mario <mario@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/07/08 17:21:52 by marioro2          #+#    #+#              #
-#    Updated: 2025/07/08 17:25:57 by marioro2         ###   ########.fr        #
+#    Created: 2025/08/08 17:25:44 by mario             #+#    #+#              #
+#    Updated: 2025/08/14 19:45:13 by mario            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,18 +14,35 @@ NAME = so_long
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
-SRC = src/main.c src/parse_map.c src/utils.c
-INC = -Iincludes
+SRCDIR = src
+INCDIR = inc
+LIBFTDIR = libft
+LIBFT = $(LIBFTDIR)/libft.a
 
-$(NAME): $(SRC)
-	$(CC) $(CFLAGS) $(SRC) $(INC) -o $(NAME)
+SRC = $(SRCDIR)/main.c \
+      $(SRCDIR)/map.c \
+      $(SRCDIR)/utils.c
+OBJ = $(SRC:.c=.o)
+INC = -I$(INCDIR) -I$(LIBFTDIR)
 
-all: $(NAME)
+all: $(LIBFT) $(NAME)
+
+$(LIBFT):
+	$(MAKE) -C $(LIBFTDIR)
+
+$(NAME): $(OBJ) $(LIBFT)
+	$(CC) $(CFLAGS) $(OBJ) $(LIBFT) $(INC) -o $(NAME)
+
+%.o: %.c
+	$(CC) $(CFLAGS) $(INC) -c $< -o $@
 
 clean:
-	rm -f $(NAME)
-	
+	rm -f $(OBJ)
+	$(MAKE) -C $(LIBFTDIR) clean
+
 fclean: clean
+	rm -f $(NAME)
+	$(MAKE) -C $(LIBFTDIR) fclean
 
 re: fclean all
 

@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   ft_get_next_line.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marioro2 <marioro2@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 13:49:51 by mario             #+#    #+#             */
-/*   Updated: 2025/07/08 17:47:28 by marioro2         ###   ########.fr       */
+/*   Updated: 2025/08/02 17:49:23 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "../inc/get_next_line.h"
+#include "libft.h"
 
-char	*get_next_line(int fd)
+char	*ft_get_next_line(int fd)
 {
 	static char	buffer[BUFFER_SIZE + 1];
 	char		*line;
@@ -23,7 +22,7 @@ char	*get_next_line(int fd)
 		return (NULL);
 	i = 0;
 	line = NULL;
-	read_to_buffer(fd, &line, buffer);
+	ft_read_to_buffer(fd, &line, buffer);
 	if (line)
 	{
 		while (line[i] && line[i] != '\n')
@@ -32,6 +31,6 @@ char	*get_next_line(int fd)
 			i++;
 		line[i] = '\0';
 	}
-	trim_buffer(buffer);
+	ft_trim_buffer(buffer);
 	return (line);
 }
