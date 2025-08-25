@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 19:06:44 by marioro2          #+#    #+#             */
-/*   Updated: 2025/08/12 18:51:51 by mario            ###   ########.fr       */
+/*   Updated: 2025/08/25 22:19:55 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,21 @@
 
 typedef struct s_game
 {
-    char    **map;
-    int     width;
-    int     height;
-	int     player_x;
-	int     player_y;
-	int     player;
-	int     exits;
-	int     collectibles;
-	int     moves;
+	char	**map;
+	int		width;
+	int		height;
+	int		player_x;
+	int		player_y;
+	int		player;
+	int		exit;
+	int		collectibles;
+	void	*mlx;
+	void	*win;
+	void	*img_wall;  
+	void	*img_floor;
+	void	*img_player;
+	void	*img_exit;
+	void	*img_collectible;
 } t_game;
 
 typedef struct s_flood
@@ -42,20 +48,32 @@ typedef struct s_flood
 
 // parsing
 int		read_map(const char *filename, t_game *game);
-void	exit_error(const char *msg);
 void	validate_map(t_game *game);
-void	validate_line(char *line, int row, t_game *game, int *player, int *exit, int *collectibles);
-void	validate_path(t_game *game);
+void	validate_line(char *line, int row, t_game *game);
+void	check_wall(int row, int col, int last_idx, char c);
 
 // utils
-void	free_map(char **map);
-void	print_error(char *msg);
-char	*get_next_line(int fd);
-char    *gnl_strjoin(char *s1, char *s2);
-char    **ft_split(char const *s, char c);
-void	flood_fill(char **map, int x, int y, t_flood *data);
-char	**copy_map(char **map, int height);
+void	exit_error(const char *msg);
 void	free_map(char **map);
 void	remove_newline(char *line);
+void	free_game(t_game *game);
+
+// flood fill
+char	**copy_map(char **map, int height);
+void	flood_fill(char **map, int x, int y, t_flood *data);
+void	validate_path(t_game *game);
+
+// render
+void	init_game(t_game *game);
+void	render_map(t_game *game);
+void	load_images(t_game *game);
+void	draw_tile(t_game *game, void *img, int x, int y);
+
+// main
+int		close_game(t_game *game);
+int		handle_key(int keycode, t_game *game);
+
+// move player
+void	move_player(t_game *game, int dx, int dy);
 
 #endif

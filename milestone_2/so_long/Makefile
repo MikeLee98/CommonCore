@@ -6,7 +6,7 @@
 #    By: mario <mario@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/08 17:25:44 by mario             #+#    #+#              #
-#    Updated: 2025/08/14 19:45:13 by mario            ###   ########.fr        #
+#    Updated: 2025/08/25 22:20:37 by mario            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,19 +19,29 @@ INCDIR = inc
 LIBFTDIR = libft
 LIBFT = $(LIBFTDIR)/libft.a
 
+MLX_DIR = ./mlx
+MLX = $(MLX_DIR)/libmlx.a
+MLX_FLAGS = -L$(MLX_DIR) -lmlx -lXext -lX11 -lm
+
 SRC = $(SRCDIR)/main.c \
       $(SRCDIR)/map.c \
-      $(SRCDIR)/utils.c
+      $(SRCDIR)/utils.c \
+	  $(SRCDIR)/flood_fill.c \
+	  $(SRCDIR)/render.c \
+	  $(SRCDIR)/move_player.c
 OBJ = $(SRC:.c=.o)
-INC = -I$(INCDIR) -I$(LIBFTDIR)
+INC = -I$(INCDIR) -I$(LIBFTDIR) -I$(MLX_DIR)
 
-all: $(LIBFT) $(NAME)
+all: $(LIBFT) $(MLX) $(NAME)
 
 $(LIBFT):
 	$(MAKE) -C $(LIBFTDIR)
 
-$(NAME): $(OBJ) $(LIBFT)
-	$(CC) $(CFLAGS) $(OBJ) $(LIBFT) $(INC) -o $(NAME)
+$(MLX):
+	$(MAKE) -C $(MLX_DIR)
+
+$(NAME): $(OBJ) $(LIBFT) $(MLX)
+	$(CC) $(CFLAGS) $(OBJ) $(LIBFT) $(MLX_FLAGS) -o $(NAME)
 
 %.o: %.c
 	$(CC) $(CFLAGS) $(INC) -c $< -o $@
@@ -39,10 +49,12 @@ $(NAME): $(OBJ) $(LIBFT)
 clean:
 	rm -f $(OBJ)
 	$(MAKE) -C $(LIBFTDIR) clean
+	$(MAKE) -C $(MLX_DIR) clean
 
 fclean: clean
 	rm -f $(NAME)
 	$(MAKE) -C $(LIBFTDIR) fclean
+
 
 re: fclean all
 

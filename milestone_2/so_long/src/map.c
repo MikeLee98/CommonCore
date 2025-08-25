@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 16:15:37 by marioro2          #+#    #+#             */
-/*   Updated: 2025/08/12 18:36:34 by mario            ###   ########.fr       */
+/*   Updated: 2025/08/25 18:47:05 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,7 @@ static int	map_line_count(const char *filename)
 	count = 0;
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
-		{
 			exit_error("Error opening file");
-			return (-1);
-		}
 	while ((line = ft_get_next_line(fd)))
 	{
 		free(line);
@@ -64,74 +61,58 @@ int	read_map(const char *filename, t_game *game)
 void	validate_map(t_game *game)
 {
 	int i;
-	int player;
-	int exit;
-	int collectibles;
 	int line_len;
 	
 	i = 0;
-	player = 0;
-	exit = 0;
-	collectibles = 0;
+	game->player = 0;
+	game->exit = 0;
+	game->collectibles = 0;
 	line_len = ft_strlen(game->map[0]);
 	while (i < game->height)
 	{
-		if ((int)ft_strlen(game->map[i])!= line_len)
+		if ((int)ft_strlen(game->map[i]) != line_len)
 			exit_error("Map is not rectangular");
-		validate_line(game->map[i], i, game, &player, &exit, &collectibles);
+		validate_line(game->map[i], i, game);
 		i++;	
 	}
-	if (player != 1)
+	if (game->player != 1)
 		exit_error("Invalid number of players");
-	if (exit != 1)
+	if (game->exit != 1)
 		exit_error("Invalid number of exits");
-	if (collectibles < 1)
+	if (game->collectibles < 1)
 		exit_error("No collectibles found");
-	game->collectibles = collectibles;
 }
 
-void	validate_line(char *line, int row, t_game *game, int *player, int *exit, int *collectibles) // !!!!!
+void	validate_line(char *line, int row, t_game *game)
 {
 	int		i;
+	int		last_indx;
 	char	c;
 
+	last_indx = ft_strlen(line) - 1;
 	i = 0;
-	while (line[i] && line[i] != '\n')
+	while (line[i])
 	{
 		c = line[i];
 		if (c != '0' && c != '1' && c != 'P' && c != 'E' && c != 'C')
 			exit_error("Invalid character in map");
-		if ((row == 0 || row == game->height - 1 || i == 0 || i == (int)ft_strlen(line) - 1) && c != '1')
-			exit_error("Map is not surrounded by walls");
+		check_wall(row, i, last_indx, c);
 		if (c == 'P')
 		{
-			(*player)++;
+			(game->player)++;
 			game->player_x = i;
 			game->player_y = row; 
 		}
 		else if (c == 'E')
-			(*exit)++;
+			(game->exit)++;
 		else if (c == 'C')
-			(*collectibles)++;
+			(game->collectibles)++;
 		i++;
 	}
 }
 
-void 	validate_path(t_game *game)
+void	check_wall(int row, int col, int last_idx, char c)
 {
-	char	**visited;
-	int		collects;
-	int		exit_found;
-
-	visited = copy_map(game->map, game->height);
-	if (!visited)
-		exit_error("Error copying map");
-	collects = 0;
-	exit_found = 0;
-	flood_fill(visited, game->player_x, game->player_y, &(t_flood){&collects, &exit_found}); // !!!!!
-	free_map(visited);
-	if (collects != game->collectibles)
-		exit_error("Collectibles not reachable");
-	if (!exit_found)
-		exit_error("Exit not reachable");
+	if ((row == 0 || row == last_idx || col == 0 || col == last_idx) && c != '1')
+		exit_error("Map is not surrounded by walls");
 }
