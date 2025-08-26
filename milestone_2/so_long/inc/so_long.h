@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 19:06:44 by marioro2          #+#    #+#             */
-/*   Updated: 2025/08/25 22:19:55 by mario            ###   ########.fr       */
+/*   Updated: 2025/08/26 22:13:38 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ typedef struct s_game
 	void	*img_player;
 	void	*img_exit;
 	void	*img_collectible;
+	int		moves;
 } t_game;
 
 typedef struct s_flood
@@ -53,7 +54,7 @@ void	validate_line(char *line, int row, t_game *game);
 void	check_wall(int row, int col, int last_idx, char c);
 
 // utils
-void	exit_error(const char *msg);
+void	exit_error(const char *msg, t_game *game);
 void	free_map(char **map);
 void	remove_newline(char *line);
 void	free_game(t_game *game);

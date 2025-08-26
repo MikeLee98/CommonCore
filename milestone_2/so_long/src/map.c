@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 16:15:37 by marioro2          #+#    #+#             */
-/*   Updated: 2025/08/25 18:47:05 by mario            ###   ########.fr       */
+/*   Updated: 2025/08/26 22:22:29 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int	map_line_count(const char *filename)
 	count = 0;
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
-			exit_error("Error opening file");
+			exit_error("Error opening file", NULL);
 	while ((line = ft_get_next_line(fd)))
 	{
 		free(line);
@@ -40,13 +40,13 @@ int	read_map(const char *filename, t_game *game)
 	row = 0;
 	game->height = map_line_count(filename);
 	if (game->height == 0)
-		exit_error("Empty map");
+		exit_error("Empty map", NULL);
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
-		exit_error("Error opening file");
+		exit_error("Error opening file", NULL);
 	game->map = malloc(sizeof(char *) * (game->height + 1));
 	if (!game->map)
-		exit_error("Memory allocation failed");
+		exit_error("Memory allocation failed", NULL);
 	while ((line = ft_get_next_line(fd)))
 	{
 		remove_newline(line);
@@ -71,16 +71,16 @@ void	validate_map(t_game *game)
 	while (i < game->height)
 	{
 		if ((int)ft_strlen(game->map[i]) != line_len)
-			exit_error("Map is not rectangular");
+			exit_error("Map is not rectangular", game);
 		validate_line(game->map[i], i, game);
 		i++;	
 	}
 	if (game->player != 1)
-		exit_error("Invalid number of players");
+		exit_error("Invalid number of players", game);
 	if (game->exit != 1)
-		exit_error("Invalid number of exits");
+		exit_error("Invalid number of exits", game);
 	if (game->collectibles < 1)
-		exit_error("No collectibles found");
+		exit_error("No collectibles found", game);
 }
 
 void	validate_line(char *line, int row, t_game *game)
@@ -95,13 +95,14 @@ void	validate_line(char *line, int row, t_game *game)
 	{
 		c = line[i];
 		if (c != '0' && c != '1' && c != 'P' && c != 'E' && c != 'C')
-			exit_error("Invalid character in map");
+			exit_error("Invalid character in map", game);
 		check_wall(row, i, last_indx, c);
 		if (c == 'P')
 		{
 			(game->player)++;
 			game->player_x = i;
-			game->player_y = row; 
+			game->player_y = row;
+			game->map[row][i] = '0';
 		}
 		else if (c == 'E')
 			(game->exit)++;
@@ -114,5 +115,5 @@ void	validate_line(char *line, int row, t_game *game)
 void	check_wall(int row, int col, int last_idx, char c)
 {
 	if ((row == 0 || row == last_idx || col == 0 || col == last_idx) && c != '1')
-		exit_error("Map is not surrounded by walls");
+		exit_error("Map is not surrounded by walls", NULL);
 }

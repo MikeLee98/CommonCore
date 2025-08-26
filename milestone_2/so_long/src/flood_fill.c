@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/15 16:01:22 by mario             #+#    #+#             */
-/*   Updated: 2025/08/15 16:06:45 by mario            ###   ########.fr       */
+/*   Updated: 2025/08/26 22:22:58 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void 	validate_path(t_game *game)
 
 	visited = copy_map(game->map, game->height);
 	if (!visited)
-		exit_error("Error copying map");
+		exit_error("Error copying map", game);
 	collects = 0;
 	exit_found = 0;
 	data.collects = &collects;
@@ -72,7 +72,7 @@ void 	validate_path(t_game *game)
 	flood_fill(visited, game->player_x, game->player_y, &data);
 	free_map(visited);
 	if (collects != game->collectibles)
-		exit_error("Collectibles not reachable");
+		exit_error("Collectibles not reachable", game);
 	if (!exit_found)
-		exit_error("Exit not reachable");
+		exit_error("Exit not reachable", game);
 }
