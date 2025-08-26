@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 17:10:40 by marioro2          #+#    #+#             */
-/*   Updated: 2025/08/26 22:17:56 by mario            ###   ########.fr       */
+/*   Updated: 2025/08/26 23:57:38 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,8 @@ void	remove_newline(char *line)
 		line[len - 1] = '\0';
 }
 
-void	exit_error(const char *msg, t_game *game)
+void	exit_error(const char *msg)
 {
-	if (game)
-		free_game(game);
 	write(2, "Error\n", 6);
 	write(2, msg, ft_strlen(msg));
 	write(2, "\n", 1);
@@ -71,4 +69,10 @@ void	free_game(t_game *game)
 			free(game->mlx);
 		}
 	#endif
+}
+
+void	check_wall(int row, int col, int last_idx, char c)
+{
+	if ((row == 0 || row == last_idx || col == 0 || col == last_idx) && c != '1')
+		exit_error("Map is not surrounded by walls");
 }

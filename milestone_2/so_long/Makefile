@@ -6,7 +6,7 @@
 #    By: mario <mario@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/08 17:25:44 by mario             #+#    #+#              #
-#    Updated: 2025/08/25 22:20:37 by mario            ###   ########.fr        #
+#    Updated: 2025/08/26 22:35:05 by mario            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,4 +58,7 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+mlx:
+	git clone https://github.com/42Paris/minilibx-linux.git $(MLX_DIR)
+
+.PHONY: all clean fclean re	mlx

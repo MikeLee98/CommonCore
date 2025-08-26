@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 21:51:53 by mario             #+#    #+#             */
-/*   Updated: 2025/08/26 21:54:55 by mario            ###   ########.fr       */
+/*   Updated: 2025/08/26 23:15:05 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ static void	update_position(t_game *game, int new_x, int new_y)
 		ft_printf("Victory! All collectibles gathered in %d moves!\n", game->moves + 1);
 		close_game(game);
 	}
-	// game->map[game->player_y][game->player_x] = '0';
 	game->player_x = new_x;
 	game->player_y = new_y;
 	game->moves++;

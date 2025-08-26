@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 19:06:13 by marioro2          #+#    #+#             */
-/*   Updated: 2025/08/26 22:18:41 by mario            ###   ########.fr       */
+/*   Updated: 2025/08/26 23:56:17 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	main(int argc, char **argv)
 	t_game	game;
 
 	if (argc != 2)
-		exit_error("Use: ./so_long mapa.ber", NULL);
+		exit_error("Use: ./so_long mapa.ber");
 	read_map(argv[1], &game);
 	validate_map(&game);
 	validate_path(&game);

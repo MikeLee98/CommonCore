@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 19:06:44 by marioro2          #+#    #+#             */
-/*   Updated: 2025/08/26 22:13:38 by mario            ###   ########.fr       */
+/*   Updated: 2025/08/26 23:55:50 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,17 +47,19 @@ typedef struct s_flood
 	int	*exit_found;
 }	t_flood;
 
-// parsing
+// map
 int		read_map(const char *filename, t_game *game);
 void	validate_map(t_game *game);
 void	validate_line(char *line, int row, t_game *game);
-void	check_wall(int row, int col, int last_idx, char c);
+void	validate_char(char c, int row, int col, int last_indx, t_game *game);
+int		count_elements(char c, t_game *game);
 
 // utils
-void	exit_error(const char *msg, t_game *game);
+void	exit_error(const char *msg);
 void	free_map(char **map);
 void	remove_newline(char *line);
 void	free_game(t_game *game);
+void	check_wall(int row, int col, int last_idx, char c);
 
 // flood fill
 char	**copy_map(char **map, int height);
