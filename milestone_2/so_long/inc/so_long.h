@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 19:06:44 by marioro2          #+#    #+#             */
-/*   Updated: 2025/08/26 23:55:50 by mario            ###   ########.fr       */
+/*   Updated: 2025/08/29 16:52:37 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,13 @@ typedef struct s_game
 	int		collectibles;
 	void	*mlx;
 	void	*win;
-	void	*img_wall;  
+	void	*img_wall;
 	void	*img_floor;
 	void	*img_player;
 	void	*img_exit;
 	void	*img_collectible;
 	int		moves;
-} t_game;
+}	t_game;
 
 typedef struct s_flood
 {
@@ -51,7 +51,6 @@ typedef struct s_flood
 int		read_map(const char *filename, t_game *game);
 void	validate_map(t_game *game);
 void	validate_line(char *line, int row, t_game *game);
-void	validate_char(char c, int row, int col, int last_indx, t_game *game);
 int		count_elements(char c, t_game *game);
 
 // utils

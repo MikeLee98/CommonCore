@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 17:10:40 by marioro2          #+#    #+#             */
-/*   Updated: 2025/08/26 23:57:38 by mario            ###   ########.fr       */
+/*   Updated: 2025/08/29 17:41:34 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,17 +62,15 @@ void	free_game(t_game *game)
 		mlx_destroy_window(game->mlx, game->win);
 	if (game->map)
 		free_map(game->map);
-	#ifdef __linux__
-		if (game->mlx)
-		{
-			mlx_destroy_display(game->mlx);
-			free(game->mlx);
-		}
-	#endif
+	if (game->mlx)
+	{
+		mlx_destroy_display(game->mlx);
+		free(game->mlx);
+	}
 }
 
-void	check_wall(int row, int col, int last_idx, char c)
+void	check_wall(int row, int col, int last_i, char c)
 {
-	if ((row == 0 || row == last_idx || col == 0 || col == last_idx) && c != '1')
+	if ((row == 0 || row == last_i || col == 0 || col == last_i) && c != '1')
 		exit_error("Map is not surrounded by walls");
 }

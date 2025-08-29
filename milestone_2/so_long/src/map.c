@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 16:15:37 by marioro2          #+#    #+#             */
-/*   Updated: 2025/08/26 23:57:07 by mario            ###   ########.fr       */
+/*   Updated: 2025/08/29 17:18:41 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,19 +17,21 @@ static int	map_line_count(const char *filename)
 	int		fd;
 	int		count;
 	char	*line;
-	
+
 	count = 0;
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
-			exit_error("Error opening file");
-	while ((line = ft_get_next_line(fd)))
+		exit_error("Error opening file");
+	line = ft_get_next_line(fd);
+	while (line)
 	{
 		free(line);
 		count++;
+		line = ft_get_next_line(fd);
 	}
 	close(fd);
 	return (count);
-}	
+}
 
 int	read_map(const char *filename, t_game *game)
 {
@@ -47,10 +49,12 @@ int	read_map(const char *filename, t_game *game)
 	game->map = malloc(sizeof(char *) * (game->height + 1));
 	if (!game->map)
 		exit_error("Memory allocation failed");
-	while ((line = ft_get_next_line(fd)))
+	line = ft_get_next_line(fd);
+	while (line)
 	{
 		remove_newline(line);
 		game->map[row++] = line;
+		line = ft_get_next_line(fd);
 	}
 	game->map[row] = NULL;
 	close(fd);
@@ -60,9 +64,9 @@ int	read_map(const char *filename, t_game *game)
 
 void	validate_map(t_game *game)
 {
-	int i;
-	int line_len;
-	
+	int	i;
+	int	line_len;
+
 	i = 0;
 	game->player = count_elements('P', game);
 	game->exit = count_elements('E', game);
@@ -107,18 +111,18 @@ int	count_elements(char c, t_game *game)
 
 void	validate_line(char *line, int row, t_game *game)
 {
-    int		col;
-    int		last_indx;
+	int		col;
+	int		last_i;
 	char	c;
 
-    last_indx = ft_strlen(line) - 1;
-    col = 0;
-    while (line[col])
-    {
+	last_i = ft_strlen(line) - 1;
+	col = 0;
+	while (line[col])
+	{
 		c = line[col];
 		if (c != '0' && c != '1' && c != 'P' && c != 'E' && c != 'C')
 			exit_error("Invalid character in map");
-		check_wall(row, col, last_indx, c);
+		check_wall(row, col, last_i, c);
 		if (c == 'P')
 		{
 			game->player_x = col;
@@ -127,5 +131,5 @@ void	validate_line(char *line, int row, t_game *game)
 		else if (c == 'C')
 			(game->collectibles)++;
 		col++;
-    }
+	}
 }

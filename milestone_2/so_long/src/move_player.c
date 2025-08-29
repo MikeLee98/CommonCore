@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 21:51:53 by mario             #+#    #+#             */
-/*   Updated: 2025/08/26 23:15:05 by mario            ###   ########.fr       */
+/*   Updated: 2025/08/29 17:09:36 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	update_position(t_game *game, int new_x, int new_y)
 	}
 	if (game->map[new_y][new_x] == 'E' && game->collectibles == 0)
 	{
-		ft_printf("Victory! All collectibles gathered in %d moves!\n", game->moves + 1);
+		ft_printf("All collectibles gathered in %d moves!\n", game->moves + 1);
 		close_game(game);
 	}
 	game->player_x = new_x;

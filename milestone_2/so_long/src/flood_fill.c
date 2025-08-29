@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/15 16:01:22 by mario             #+#    #+#             */
-/*   Updated: 2025/08/26 23:56:01 by mario            ###   ########.fr       */
+/*   Updated: 2025/08/29 16:58:11 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	flood_fill(char **map, int x, int y, t_flood *data)
 {
 	char	c;
 
-	if(y < 0 || x < 0 || !map[y] || x >= (int)ft_strlen(map[y]))
+	if (y < 0 || x < 0 || !map[y] || x >= (int)ft_strlen(map[y]))
 		return ;
 	c = map[y][x];
 	if (c == '1' || c == 'X')
@@ -55,7 +55,7 @@ void	flood_fill(char **map, int x, int y, t_flood *data)
 	flood_fill(map, x, y - 1, data);
 }
 
-void 	validate_path(t_game *game)
+void	validate_path(t_game *game)
 {
 	char	**visited;
 	int		collects;

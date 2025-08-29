@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/12 18:50:03 by mario             #+#    #+#             */
-/*   Updated: 2025/08/27 00:00:11 by mario            ###   ########.fr       */
+/*   Updated: 2025/08/29 17:25:17 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,21 @@ void	load_images(t_game *game)
 	int	img_w;
 	int	img_h;
 
-	game->img_wall = mlx_xpm_file_to_image(game->mlx, "assets/wall.xpm", &img_w, &img_h);
-	game->img_floor = mlx_xpm_file_to_image(game->mlx, "assets/floor.xpm", &img_w, &img_h);
-	game->img_player = mlx_xpm_file_to_image(game->mlx, "assets/player.xpm", &img_w, &img_h);
-	game->img_exit = mlx_xpm_file_to_image(game->mlx, "assets/exit.xpm", &img_w, &img_h);
-	game->img_collectible = mlx_xpm_file_to_image(game->mlx, "assets/collectible.xpm", &img_w, &img_h);
-	if (!game->img_wall || !game->img_floor || !game->img_player || !game->img_exit || !game->img_collectible)
+	game->img_wall = mlx_xpm_file_to_image(game->mlx,
+			"assets/wall.xpm", &img_w, &img_h);
+	game->img_floor = mlx_xpm_file_to_image(game->mlx,
+			"assets/floor.xpm", &img_w, &img_h);
+	game->img_player = mlx_xpm_file_to_image(game->mlx,
+			"assets/player.xpm", &img_w, &img_h);
+	game->img_exit = mlx_xpm_file_to_image(game->mlx,
+			"assets/exit.xpm", &img_w, &img_h);
+	game->img_collectible = mlx_xpm_file_to_image(game->mlx,
+			"assets/collectible.xpm", &img_w, &img_h);
+	if (!game->img_wall
+		|| !game->img_floor
+		|| !game->img_player
+		|| !game->img_exit
+		|| !game->img_collectible)
 	{
 		free_game(game);
 		exit_error("Missing image files");
@@ -33,7 +42,8 @@ void	load_images(t_game *game)
 
 void	draw_tile(t_game *game, void *img, int x, int y)
 {
-	mlx_put_image_to_window(game->mlx, game->win, img, x * TILE_SIZE, y * TILE_SIZE);
+	mlx_put_image_to_window(game->mlx, game->win,
+		img, x * TILE_SIZE, y * TILE_SIZE);
 }
 
 void	render_map(t_game *game)
@@ -67,11 +77,10 @@ void	init_game(t_game *game)
 	game->mlx = mlx_init();
 	if (!game->mlx)
 		exit_error("Failed to initialize MLX");
-	game->win = mlx_new_window(game->mlx, game->width * TILE_SIZE, game->height * TILE_SIZE, "so_long");
+	game->win = mlx_new_window(game->mlx, game->width * TILE_SIZE,
+			game->height * TILE_SIZE, "so_long");
 	if (!game->win)
 		exit_error("Failed to create window");
 	load_images(game);
 	render_map(game);
 }
-
-
