@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 09:43:44 by mario             #+#    #+#             */
-/*   Updated: 2025/09/30 17:26:53 by mario            ###   ########.fr       */
+/*   Updated: 2025/10/07 12:10:46 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,6 @@ int		main(int argc, char **argv);
 
 // parsing
 t_stack	*parse_args(int argc, char **argv);
-
-// parsing_utils
-int		is_number(char *str);
-long	ft_atol(const char *str);
-int     has_duplicates(t_stack *stack);
 
 //stack_utils
 t_stack	*new_node(int value);
