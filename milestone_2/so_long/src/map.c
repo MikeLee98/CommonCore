@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 16:15:37 by marioro2          #+#    #+#             */
-/*   Updated: 2025/08/29 17:18:41 by mario            ###   ########.fr       */
+/*   Updated: 2025/10/16 17:56:35 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,51 @@ static int	map_line_count(const char *filename)
 	}
 	close(fd);
 	return (count);
+}
+
+static int	count_elements(char c, t_game *game)
+{
+	int	i;
+	int	j;
+	int	count;
+
+	count = 0;
+	i = 0;
+	while (game->map[i])
+	{
+		j = 0;
+		while (game->map[i][j])
+		{
+			if (game->map[i][j] == c)
+				count++;
+			j++;
+		}
+		i++;
+	}
+	return (count);
+}
+
+static void	validate_line(char *line, int row, t_game *game)
+{
+	int		col;
+	char	c;
+
+	col = 0;
+	while (line[col])
+	{
+		c = line[col];
+		if (c != '0' && c != '1' && c != 'P' && c != 'E' && c != 'C')
+			exit_error("Invalid character in map");
+		check_wall(game, row, col, c);
+		if (c == 'P')
+		{
+			game->player_x = col;
+			game->player_y = row;
+		}
+		else if (c == 'C')
+			(game->collectibles)++;
+		col++;
+	}
 }
 
 int	read_map(const char *filename, t_game *game)
@@ -85,51 +130,4 @@ void	validate_map(t_game *game)
 	}
 	if (game->collectibles < 1)
 		exit_error("No collectibles found");
-}
-
-int	count_elements(char c, t_game *game)
-{
-	int	i;
-	int	j;
-	int	count;
-
-	count = 0;
-	i = 0;
-	while (game->map[i])
-	{
-		j = 0;
-		while (game->map[i][j])
-		{
-			if (game->map[i][j] == c)
-				count++;
-			j++;
-		}
-		i++;
-	}
-	return (count);
-}
-
-void	validate_line(char *line, int row, t_game *game)
-{
-	int		col;
-	int		last_i;
-	char	c;
-
-	last_i = ft_strlen(line) - 1;
-	col = 0;
-	while (line[col])
-	{
-		c = line[col];
-		if (c != '0' && c != '1' && c != 'P' && c != 'E' && c != 'C')
-			exit_error("Invalid character in map");
-		check_wall(row, col, last_i, c);
-		if (c == 'P')
-		{
-			game->player_x = col;
-			game->player_y = row;
-		}
-		else if (c == 'C')
-			(game->collectibles)++;
-		col++;
-	}
 }

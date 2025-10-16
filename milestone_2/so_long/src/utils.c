@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 17:10:40 by marioro2          #+#    #+#             */
-/*   Updated: 2025/08/29 17:41:34 by mario            ###   ########.fr       */
+/*   Updated: 2025/10/16 18:10:10 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,8 @@ void	free_game(t_game *game)
 	}
 }
 
-void	check_wall(int row, int col, int last_i, char c)
+void	check_wall(t_game *game, int row, int col, char c)
 {
-	if ((row == 0 || row == last_i || col == 0 || col == last_i) && c != '1')
+	if ((row == 0 || row == game->height - 1 || col == 0 || col == game->width - 1) && c != '1')
 		exit_error("Map is not surrounded by walls");
 }

@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/12 18:50:03 by mario             #+#    #+#             */
-/*   Updated: 2025/08/29 17:25:17 by mario            ###   ########.fr       */
+/*   Updated: 2025/10/16 19:52:20 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 #define TILE_SIZE 64
 
-void	load_images(t_game *game)
+static void	load_images(t_game *game)
 {
 	int	img_w;
 	int	img_h;
@@ -40,7 +40,7 @@ void	load_images(t_game *game)
 	}
 }
 
-void	draw_tile(t_game *game, void *img, int x, int y)
+static void	draw_tile(t_game *game, void *img, int x, int y)
 {
 	mlx_put_image_to_window(game->mlx, game->win,
 		img, x * TILE_SIZE, y * TILE_SIZE);

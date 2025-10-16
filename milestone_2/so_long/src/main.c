@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 19:06:13 by marioro2          #+#    #+#             */
-/*   Updated: 2025/08/26 23:56:17 by mario            ###   ########.fr       */
+/*   Updated: 2025/10/16 04:56:52 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	main(int argc, char **argv)
 	t_game	game;
 
 	if (argc != 2)
-		exit_error("Use: ./so_long mapa.ber");
+		exit_error("Use: ./so_long map.ber");
 	read_map(argv[1], &game);
 	validate_map(&game);
 	validate_path(&game);
@@ -53,6 +53,6 @@ int	main(int argc, char **argv)
 	mlx_key_hook(game.win, handle_key, &game);
 	mlx_hook(game.win, 17, 0, close_game, &game);
 	mlx_loop(game.mlx);
-	printf("Mapa válido! Dimensões: %d x %d\n", game.width, game.height);
+	printf("Valid map! Size: %d x %d\n", game.width, game.height);
 	return (0);
 }

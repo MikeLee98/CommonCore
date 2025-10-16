@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 19:06:44 by marioro2          #+#    #+#             */
-/*   Updated: 2025/08/29 16:52:37 by mario            ###   ########.fr       */
+/*   Updated: 2025/10/16 19:52:31 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,26 +50,13 @@ typedef struct s_flood
 // map
 int		read_map(const char *filename, t_game *game);
 void	validate_map(t_game *game);
-void	validate_line(char *line, int row, t_game *game);
-int		count_elements(char c, t_game *game);
-
-// utils
-void	exit_error(const char *msg);
-void	free_map(char **map);
-void	remove_newline(char *line);
-void	free_game(t_game *game);
-void	check_wall(int row, int col, int last_idx, char c);
 
 // flood fill
-char	**copy_map(char **map, int height);
-void	flood_fill(char **map, int x, int y, t_flood *data);
 void	validate_path(t_game *game);
 
 // render
 void	init_game(t_game *game);
 void	render_map(t_game *game);
-void	load_images(t_game *game);
-void	draw_tile(t_game *game, void *img, int x, int y);
 
 // main
 int		close_game(t_game *game);
@@ -77,5 +64,12 @@ int		handle_key(int keycode, t_game *game);
 
 // move player
 void	move_player(t_game *game, int dx, int dy);
+
+// utils
+void	exit_error(const char *msg);
+void	free_map(char **map);
+void	remove_newline(char *line);
+void	free_game(t_game *game);
+void	check_wall(t_game *game, int row, int col, char c);
 
 #endif

@@ -6,13 +6,13 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/15 16:01:22 by mario             #+#    #+#             */
-/*   Updated: 2025/08/29 16:58:11 by mario            ###   ########.fr       */
+/*   Updated: 2025/10/16 19:24:21 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-char	**copy_map(char **map, int height)
+static char	**copy_map(char **map, int height)
 {
 	char	**copy;
 	int		i;
@@ -35,7 +35,7 @@ char	**copy_map(char **map, int height)
 	return (copy);
 }
 
-void	flood_fill(char **map, int x, int y, t_flood *data)
+static void	flood_fill(char **map, int x, int y, t_flood *data)
 {
 	char	c;
 
