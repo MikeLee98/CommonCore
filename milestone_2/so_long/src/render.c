@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/12 18:50:03 by mario             #+#    #+#             */
-/*   Updated: 2025/10/16 19:52:20 by mario            ###   ########.fr       */
+/*   Updated: 2025/10/16 20:05:52 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	render_map(t_game *game)
 		{
 			if (game->map[y][x] == '1')
 				draw_tile(game, game->img_wall, x, y);
-			else if (game->map[y][x] == '0' || game->map[y][x] == 'P')
+			else if (game->map[y][x] == '0')
 				draw_tile(game, game->img_floor, x, y);
 			else if (game->map[y][x] == 'E')
 				draw_tile(game, game->img_exit, x, y);
