@@ -6,34 +6,11 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 12:29:18 by mario             #+#    #+#             */
-/*   Updated: 2025/10/07 12:09:49 by mario            ###   ########.fr       */
+/*   Updated: 2025/10/08 20:32:54 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
-
-t_stack	*parse_args(int argc, char **argv)
-{
-	t_stack	*a;
-	long	num;
-	int		i;
-	
-	a = NULL;
-	i = 1;
-	while (i < argc)
-	{
-		if (!is_number(argv[i]))
-			error_exit(&a);
-		num = ft_atol(argv[i]);
-		if (num < -2147483648 || num > 2147483647)
-			error_exit(&a);
-		add_back(&a, new_node((int)num));
-		i++;
-	}
-	if (has_duplicates(a))
-		error_exit(&a);
-	return (a);
-}
 
 static int	is_number(char *str)
 {
@@ -96,4 +73,36 @@ static int has_duplicates(t_stack *stack)
         i = i->next;
     }
     return (0);
+}
+
+static int parse_args(char *str)
+{
+	long num;
+	
+	if (!is_number(str))
+		return (1);
+	num = ft_atol(str);
+	if (num < -2147483648 || num > 2147483647)
+		return (1);
+	return (0);
+}
+
+t_stack	*build_stack(int argc, char **argv)
+{
+	t_stack	*a;
+	long	num;
+	int		i;
+
+	a = NULL;
+	i = 1;
+	while (i < argc)
+	{
+		if (parse_args(argv[i]))
+			error_exit(&a);
+		add_back(&a, new_node((int)num));
+		i++;
+	}
+	if (has_duplicates(a))
+		error_exit(&a);
+	return (a);
 }

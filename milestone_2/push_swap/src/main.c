@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 12:58:17 by mario             #+#    #+#             */
-/*   Updated: 2025/09/30 17:30:58 by mario            ###   ########.fr       */
+/*   Updated: 2025/10/08 20:02:10 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int main(int argc, char **argv)
 
 	if (argc < 2)
 		return (0);
-	a = parse_args(argc, argv);
+	a = build_stack(argc, argv);
 	assign_indices(a);
 	b = NULL;
 	size = stack_size(a);

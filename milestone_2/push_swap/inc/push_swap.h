@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 09:43:44 by mario             #+#    #+#             */
-/*   Updated: 2025/10/07 12:10:46 by mario            ###   ########.fr       */
+/*   Updated: 2025/10/08 20:01:56 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ typedef struct s_stack
 int		main(int argc, char **argv);
 
 // parsing
-t_stack	*parse_args(int argc, char **argv);
+t_stack	*build_stack(int argc, char **argv);
 
 //stack_utils
 t_stack	*new_node(int value);
