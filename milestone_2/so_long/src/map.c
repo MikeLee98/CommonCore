@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
+/*   By: marioro2 <marioro2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 16:15:37 by marioro2          #+#    #+#             */
-/*   Updated: 2025/10/16 20:16:44 by mario            ###   ########.fr       */
+/*   Updated: 2025/10/30 16:13:29 by marioro2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,6 +128,6 @@ void	validate_map(t_game *game)
 		validate_line(game->map[i], i, game);
 		i++;
 	}
-	if (game->collectibles > 1)
+	if (game->collectibles < 1)
 		exit_error("No collectibles found");
 }

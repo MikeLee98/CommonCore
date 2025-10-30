@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
+/*   By: marioro2 <marioro2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/12 18:50:03 by mario             #+#    #+#             */
-/*   Updated: 2025/10/16 20:02:39 by mario            ###   ########.fr       */
+/*   Updated: 2025/10/30 16:31:00 by marioro2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,8 @@ void	render_map(t_game *game)
 				draw_tile(game, game->img_exit, x, y);
 			else if (game->map[y][x] == 'C')
 				draw_tile(game, game->img_collectible, x, y);
+			else if (game->map[y][x] == 'P')
+				draw_tile(game, game->img_floor, x, y);
 			x++;
 		}
 		y++;
