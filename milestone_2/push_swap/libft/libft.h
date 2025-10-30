@@ -6,12 +6,12 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 10:36:24 by marioro2          #+#    #+#             */
-/*   Updated: 2025/08/02 17:47:51 by mario            ###   ########.fr       */
+/*   Updated: 2025/10/30 02:50:28 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef		LIBFT_H
-# define	LIBFT_H
+#ifndef LIBFT_H
+# define LIBFT_H
 
 # include <stdio.h>
 # include <ctype.h>

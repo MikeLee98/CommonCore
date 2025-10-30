@@ -6,21 +6,23 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 00:19:24 by mario             #+#    #+#             */
-/*   Updated: 2025/09/28 17:49:04 by mario            ###   ########.fr       */
+/*   Updated: 2025/10/30 02:41:06 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
-int stack_size(t_stack *a)
+int	stack_size(t_stack *a)
 {
-    int size = 0;
-    while (a)
-    {
-        size++;
-        a = a->next;
-    }
-    return size;
+	int	size;
+
+	size = 0;
+	while (a)
+	{
+		size++;
+		a = a->next;
+	}
+	return (size);
 }
 
 t_stack	*new_node(int value)
@@ -66,4 +68,14 @@ void	free_stack(t_stack **stack)
 		*stack = tmp;
 	}
 	*stack = NULL;
+}
+
+void	free_split(char **split)
+{
+	int	i;
+
+	i = 0;
+	while (split[i])
+		free(split[i++]);
+	free(split);
 }

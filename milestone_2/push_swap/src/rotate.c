@@ -1,51 +1,50 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap.c                                             :+:      :+:    :+:   */
+/*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/28 17:24:19 by mario             #+#    #+#             */
-/*   Updated: 2025/09/28 18:05:46 by mario            ###   ########.fr       */
+/*   Created: 2025/09/28 17:30:52 by mario             #+#    #+#             */
+/*   Updated: 2025/10/30 02:44:40 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
-static void swap(t_stack **stack)
+static void	rotate(t_stack **stack)
 {
-	t_stack *first;
-	t_stack *second;
+	t_stack	*first;
+	t_stack	*last;
 
 	if (!*stack || !(*stack)->next)
 		return ;
 	first = *stack;
-	second = first->next;
-
-	first->next = second->next;
-	if (second->next)
-		second->next->prev = first;
-	second->prev = NULL;
-	second->next = first;
-	first->prev = second;
-	*stack = second;
+	last = *stack;
+	while (last->next)
+		last = last->next;
+	*stack = first->next;
+	(*stack)->prev = NULL;
+	first->next = NULL;
+	first->prev = last;
+	last->next = first;
 }
 
-void sa(t_stack **a)
+void	ra(t_stack **a)
 {
-    swap(a);
-    write(1, "sa\n", 3);
+	rotate(a);
+	write(1, "ra\n", 3);
 }
 
-void sb(t_stack **b)
+void	rb(t_stack **b)
 {
-    swap(b);
-    write(1, "sb\n", 3);
+	rotate(b);
+	write(1, "rb\n", 3);
 }
 
-void ss(t_stack **a, t_stack **b)
+void	rr(t_stack **a, t_stack **b)
 {
-    swap(a);
-    swap(b);
-    write(1, "ss\n", 3);
+	rotate(a);
+	rotate(b);
+	write(1, "rr\n", 3);
 }

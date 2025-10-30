@@ -6,7 +6,7 @@
 #    By: mario <mario@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/01 05:32:22 by mario             #+#    #+#              #
-#    Updated: 2025/09/30 17:35:24 by mario            ###   ########.fr        #
+#    Updated: 2025/10/30 03:34:01 by mario            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,6 @@ LIBFT = $(LIBFTDIR)/libft.a
 
 SRC = $(SRCDIR)/main.c \
 	  $(SRCDIR)/parsing.c \
-	  $(SRCDIR)/parsing_utils.c \
 	  $(SRCDIR)/stack_utils.c \
 	  $(SRCDIR)/index_stacking.c \
 	  $(SRCDIR)/swap.c \
@@ -31,6 +30,7 @@ SRC = $(SRCDIR)/main.c \
 	  $(SRCDIR)/short_sort.c \
 	  $(SRCDIR)/chunk_utils.c \
 	  $(SRCDIR)/sort_chunks.c \
+	  $(SRCDIR)/sort_utils.c \
 	  $(SRCDIR)/error.c
 OBJ = $(SRC:.c=.o)
 INC = -I $(INCDIR) -I $(LIBFTDIR)

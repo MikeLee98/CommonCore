@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 13:18:44 by mario             #+#    #+#             */
-/*   Updated: 2025/04/24 17:30:31 by mario            ###   ########.fr       */
+/*   Updated: 2025/10/30 02:48:02 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static int	ft_count_words(const char *s, char c)
 	return (count);
 }
 
-static void	*ft_free(char	**str_ptr, int	count)
+static void	*ft_free(char **str_ptr, int count)
 {
 	while (count--)
 		free(str_ptr[count]);
@@ -46,7 +46,7 @@ char	**ft_fill_split(const char *s, char c, char **str_ptr)
 	size_t	i;
 	size_t	j;
 	int		wrd_srt_i;
-	size_t s_len;
+	size_t	s_len;
 
 	i = 0;
 	j = 0;

@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 09:43:44 by mario             #+#    #+#             */
-/*   Updated: 2025/10/08 20:01:56 by mario            ###   ########.fr       */
+/*   Updated: 2025/10/30 04:12:01 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,16 +31,18 @@ typedef struct s_stack
 int		main(int argc, char **argv);
 
 // parsing
-t_stack	*build_stack(int argc, char **argv);
+int		parse_args(char *str);
+int		has_duplicates(t_stack *stack);
 
 //stack_utils
 t_stack	*new_node(int value);
 void	add_back(t_stack **stack, t_stack *new);
 void	free_stack(t_stack **stack);
-int stack_size(t_stack *a);
+int		stack_size(t_stack *a);
+void	free_split(char **split);
 
 // index_stacking
-void	assign_indices(t_stack *stack);
+void	assign_indexes(t_stack *stack);
 
 // swap
 void	sa(t_stack **a);
@@ -64,15 +66,18 @@ void	rrr(t_stack **a, t_stack **b);
 // short_sort
 void	sort_two(t_stack **a);
 void	sort_three(t_stack **a);
-void    sort_five(t_stack **a, t_stack **b);
+void	sort_five(t_stack **a, t_stack **b);
 
 // chunk_utils
-int  get_chunk_size(int size);
-int  position_in_stack(t_stack *stack, int index);
-int  find_max_index(t_stack *stack);
+int		get_chunk_size(int size);
+int		position_in_stack(t_stack *stack, int index);
+int		find_max_index(t_stack *stack);
 
 //sort_chunks
-void sort_chunks(t_stack **a, t_stack **b);
+void	sort_chunks(t_stack **a, t_stack **b);
+
+//sort_utils
+void	push_min_to_b(t_stack **a, t_stack **b);
 
 // error
 void	error_exit(t_stack **stack_a);

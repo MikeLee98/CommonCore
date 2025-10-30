@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 12:29:18 by mario             #+#    #+#             */
-/*   Updated: 2025/10/08 20:32:54 by mario            ###   ########.fr       */
+/*   Updated: 2025/10/30 02:39:13 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	is_number(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (!str || !*str)
@@ -55,54 +55,57 @@ static long	ft_atol(const char *str)
 	return (result * sign);
 }
 
-static int has_duplicates(t_stack *stack)
+int	has_duplicates(t_stack *stack)
 {
-    t_stack *i;
-    t_stack *j;
+	t_stack	*i;
+	t_stack	*j;
 
-    i = stack;
-    while (i)
-    {
-        j = i->next;
-        while (j)
-        {
-            if (i->value == j->value)
-                return (1);
-            j = j->next;
-        }
-        i = i->next;
-    }
-    return (0);
-}
-
-static int parse_args(char *str)
-{
-	long num;
-	
-	if (!is_number(str))
-		return (1);
-	num = ft_atol(str);
-	if (num < -2147483648 || num > 2147483647)
-		return (1);
+	i = stack;
+	while (i)
+	{
+		j = i->next;
+		while (j)
+		{
+			if (i->value == j->value)
+				return (1);
+			j = j->next;
+		}
+		i = i->next;
+	}
 	return (0);
 }
 
-t_stack	*build_stack(int argc, char **argv)
+static int	validate_number(char *str)
 {
-	t_stack	*a;
 	long	num;
+
+	if (!is_number(str))
+		return (0);
+	num = ft_atol(str);
+	if (num < -2147483648 || num > 2147483647)
+		return (0);
+	return (1);
+}
+
+int	parse_args(char *str)
+{
+	char	**split;
 	int		i;
 
-	a = NULL;
-	i = 1;
-	while (i < argc)
+	i = 0;
+	split = ft_split(str, ' ');
+	if (!split)
+		return (1);
+	while (split[i])
 	{
-		if (parse_args(argv[i]))
-			error_exit(&a);
-		add_back(&a, new_node((int)num));
-		i++;
+		if (validate_number(split[i]))
+			i++;
+		else
+		{
+			free_split(split);
+			return (1);
+		}
 	}
-	if (has_duplicates(a))
-		error_exit(&a);
-	return (a);
+	free_split(split);
+	return (0);
 }

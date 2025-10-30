@@ -6,13 +6,13 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 12:58:23 by mario             #+#    #+#             */
-/*   Updated: 2025/09/18 00:10:34 by mario            ###   ########.fr       */
+/*   Updated: 2025/10/30 02:30:22 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
-void error_exit(t_stack **stack)
+void	error_exit(t_stack **stack)
 {
 	if (stack && *stack)
 		free_stack(stack);

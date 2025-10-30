@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 18:16:11 by mario             #+#    #+#             */
-/*   Updated: 2025/05/01 13:24:53 by mario            ###   ########.fr       */
+/*   Updated: 2025/10/30 02:57:41 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_lstsize(t_list *lst)
 {
-	t_list 			*tmp;
+	t_list			*tmp;
 	unsigned int	i;
 
 	tmp = lst;
