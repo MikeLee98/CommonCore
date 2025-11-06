@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 02:51:07 by marioro2          #+#    #+#             */
-/*   Updated: 2025/04/23 00:49:56 by mario            ###   ########.fr       */
+/*   Updated: 2025/10/30 02:49:21 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 	size_t	src_len;
 
 	if (!dst || !src)
-   		return (0);
+		return (0);
 	src_len = ft_strlen(src);
 	if (size > 0)
 	{

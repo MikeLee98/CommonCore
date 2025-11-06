@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
+/*   By: marioro2 <marioro2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 19:06:13 by marioro2          #+#    #+#             */
-/*   Updated: 2025/10/16 04:56:52 by mario            ###   ########.fr       */
+/*   Updated: 2025/11/06 18:52:02 by marioro2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,24 @@ int	handle_key(int keycode, t_game *game)
 	return (0);
 }
 
+static int	check_extension(char *str)
+{
+	size_t	len;
+
+	len = ft_strlen(str);
+	if (len < 4)
+		return (0);
+	return (ft_strncmp(str + len - 4, ".ber", 4) == 0);
+}
+
 int	main(int argc, char **argv)
 {
 	t_game	game;
 
 	if (argc != 2)
 		exit_error("Use: ./so_long map.ber");
+	if (!check_extension(argv[1]))
+		exit_error("File must be .ber");
 	read_map(argv[1], &game);
 	validate_map(&game);
 	validate_path(&game);

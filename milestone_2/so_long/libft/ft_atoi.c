@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 16:42:12 by marioro2          #+#    #+#             */
-/*   Updated: 2025/07/29 17:52:25 by mario            ###   ########.fr       */
+/*   Updated: 2025/10/30 02:58:09 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	ft_atoi(const char *nptr)
 {
-	int num;
-	int sign;
-	
+	int	num;
+	int	sign;
+
 	num = 0;
 	sign = 1;
 	while (*nptr == 32 || (*nptr >= 9 && *nptr <= 13))
