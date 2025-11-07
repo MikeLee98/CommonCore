@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
+/*   By: marioro2 <marioro2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 12:58:17 by mario             #+#    #+#             */
-/*   Updated: 2025/10/30 02:22:36 by mario            ###   ########.fr       */
+/*   Updated: 2025/11/07 19:17:38 by marioro2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,25 @@ static t_stack	*build_stack_a(int argc, char **argv)
 	return (a);
 }
 
+int	a_is_sorted(t_stack *a)
+{
+	
+}
+
+void	sort(int size, t_stack *a, t_stack *b)
+{
+	if (size == 1)
+		return ;
+	else if (size == 2)
+		sort_two(&a);
+	else if (size == 3)
+		sort_three(&a);
+	else if (size <= 5)
+		sort_five(&a, &b);
+	else
+		sort_chunks(&a, &b);
+}
+
 int	main(int argc, char **argv)
 {
 	t_stack	*a;
@@ -61,14 +80,8 @@ int	main(int argc, char **argv)
 	assign_indexes(a);
 	b = NULL;
 	size = stack_size(a);
-	if (size == 2)
-		sort_two(&a);
-	else if (size == 3)
-		sort_three(&a);
-	else if (size <= 5)
-		sort_five(&a, &b);
-	else
-		sort_chunks(&a, &b);
+	if (!a_is_sorted(&a))
+		sort(size, &a, &b);
 	free_stack(&a);
 	free_stack(&b);
 	return (0);
