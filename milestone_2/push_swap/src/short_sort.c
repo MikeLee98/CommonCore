@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/28 17:35:22 by mario             #+#    #+#             */
-/*   Updated: 2025/11/07 22:00:42 by mario            ###   ########.fr       */
+/*   Updated: 2025/11/08 14:54:07 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	sort_three(t_stack **a)
 
 void	sort_five(t_stack **a, t_stack **b)
 {
-int	size;
+	int	size;
 
 	size = stack_size(*a);
 	if (size == 4)

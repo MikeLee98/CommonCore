@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 12:58:17 by mario             #+#    #+#             */
-/*   Updated: 2025/11/07 22:01:10 by mario            ###   ########.fr       */
+/*   Updated: 2025/11/08 14:53:52 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static t_stack	*build_stack_a(int argc, char **argv)
 
 static int	is_sorted(t_stack *a)
 {
-		while (a && a->next)
+	while (a && a->next)
 	{
 		if (a->value > a->next->value)
 			return (0);
