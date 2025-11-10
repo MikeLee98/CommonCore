@@ -6,7 +6,7 @@
 /*   By: marioro2 <marioro2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 19:06:13 by marioro2          #+#    #+#             */
-/*   Updated: 2025/11/06 18:52:02 by marioro2         ###   ########.fr       */
+/*   Updated: 2025/11/10 15:35:50 by marioro2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static int	check_extension(char *str)
 	size_t	len;
 
 	len = ft_strlen(str);
-	if (len < 4)
+	if (len < 5)
 		return (0);
 	return (ft_strncmp(str + len - 4, ".ber", 4) == 0);
 }
