@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mario <mario@student.42.fr>                +#+  +:+       +#+         #
+#    By: marioro2 <marioro2@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/21 17:30:52 by marioro2          #+#    #+#              #
-#    Updated: 2025/04/30 14:57:02 by mario            ###   ########.fr        #
+#    Updated: 2025/11/11 17:49:05 by marioro2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ BONUS			=	ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \
 	ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c
 BONUS_OBJS		= $(BONUS:.c=.o)
 
-CC				= gcc
+CC				= cc
 RM				= rm -f
 CFLAGS			= -Wall -Wextra -Werror -I.
 

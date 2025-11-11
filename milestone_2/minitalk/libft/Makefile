@@ -3,15 +3,15 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mario <mario@student.42.fr>                +#+  +:+       +#+         #
+#    By: marioro2 <marioro2@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/02 17:55:23 by mario             #+#    #+#              #
-#    Updated: 2025/08/02 19:32:46 by mario            ###   ########.fr        #
+#    Updated: 2025/11/11 17:49:55 by marioro2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME    = libft.a
-CC      = gcc
+CC      = cc
 CFLAGS  = -Wall -Wextra -Werror
 
 SRC     = ft_atoi.c ft_bzero.c ft_calloc.c ft_get_next_line_utils.c ft_get_next_line.c \
