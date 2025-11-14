@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 17:01:45 by mario             #+#    #+#             */
-/*   Updated: 2025/11/03 18:57:21 by mario            ###   ########.fr       */
+/*   Updated: 2025/11/14 04:22:33 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,19 +30,19 @@ void	send_char(pid_t pid, char c)
 			kill(pid, SIGUSR2);
 		else
 			kill(pid, SIGUSR1);
-		usleep(100);
+		usleep(150);
 		i--;
 	}
 }
 
-void	send_message(pid_t pid, char *msg)
-{
-	int	i;
+// void	send_message(pid_t pid, char *msg)
+// {
+// 	int	i;
 
-	i = 0;
-	while (msg[i])
-	{
-		send_char(pid, msg[i]);
-		i++;
-	}
-}
+// 	i = 0;
+// 	while (msg[i])
+// 	{
+// 		send_char(pid, msg[i]);
+// 		i++;
+// 	}
+// }
