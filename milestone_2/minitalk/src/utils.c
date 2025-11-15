@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 17:01:45 by mario             #+#    #+#             */
-/*   Updated: 2025/11/14 04:34:37 by mario            ###   ########.fr       */
+/*   Updated: 2025/11/15 20:03:34 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,20 +17,4 @@ void	ft_error(char *msg)
 	write(2, msg, ft_strlen(msg));
 	write(2, "\n", 1);
 	exit(EXIT_FAILURE);
-}
-
-void	send_char(pid_t pid, char c)
-{
-	int	i;
-
-	i = 7;
-	while (i >= 0)
-	{
-		if ((c >> i) & 1)
-			kill(pid, SIGUSR2);
-		else
-			kill(pid, SIGUSR1);
-		usleep(150);
-		i--;
-	}
 }
