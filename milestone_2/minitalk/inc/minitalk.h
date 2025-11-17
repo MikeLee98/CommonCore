@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 17:00:53 by mario             #+#    #+#             */
-/*   Updated: 2025/11/14 04:34:51 by mario            ###   ########.fr       */
+/*   Updated: 2025/11/17 12:01:11 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,5 @@
 
 /* utils.c */
 void	ft_error(char *msg);
-void	send_char(pid_t pid, char c);
 
 #endif
