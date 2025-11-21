@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/18 16:44:30 by marioro2          #+#    #+#             */
-/*   Updated: 2025/11/21 04:51:35 by mario            ###   ########.fr       */
+/*   Created: 2025/04/17 18:13:42 by marioro2          #+#    #+#             */
+/*   Updated: 2025/04/23 20:09:56 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-int main(int argc, char **argv, char **envp)
+char	*ft_strdup(const char *s)
 {
-    t_env *env;
+	size_t	len;
+	char	*copy;
 
-    env = init_env(envp);
-    // later: export, unset, execve conversions, etc...
-	print_env(env);
-	return (0);
+	if (s == NULL)
+		return (NULL);
+	len = ft_strlen(s) + 1;
+	copy = malloc(len);
+	if (copy == NULL)
+		return (NULL);
+	ft_memcpy(copy, s, len);
+	return (copy);
 }

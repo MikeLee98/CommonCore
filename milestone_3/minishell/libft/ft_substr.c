@@ -1,23 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/18 16:44:30 by marioro2          #+#    #+#             */
-/*   Updated: 2025/11/21 04:51:35 by mario            ###   ########.fr       */
+/*   Created: 2025/04/23 20:10:58 by mario             #+#    #+#             */
+/*   Updated: 2025/04/23 20:46:33 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-int main(int argc, char **argv, char **envp)
+char	*ft_substr(const char *s, unsigned int start, size_t len)
 {
-    t_env *env;
+	char	*str;
 
-    env = init_env(envp);
-    // later: export, unset, execve conversions, etc...
-	print_env(env);
-	return (0);
+	if (!s)
+		return (NULL);
+	if (start >= ft_strlen(s))
+		return (ft_strdup(""));
+	if (len > ft_strlen(s + start))
+		len = ft_strlen(s + start);
+	str = ft_calloc(len + 1, sizeof(char));
+	if (!str)
+		return (NULL);
+	ft_strlcpy(str, s + start, len + 1);
+	return (str);
 }

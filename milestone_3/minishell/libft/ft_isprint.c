@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
+/*   By: marioro2 <marioro2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/18 16:44:30 by marioro2          #+#    #+#             */
-/*   Updated: 2025/11/21 04:51:35 by mario            ###   ########.fr       */
+/*   Created: 2025/04/10 13:44:25 by marioro2          #+#    #+#             */
+/*   Updated: 2025/04/21 10:26:47 by marioro2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-int main(int argc, char **argv, char **envp)
+int	ft_isprint(int c)
 {
-    t_env *env;
-
-    env = init_env(envp);
-    // later: export, unset, execve conversions, etc...
-	print_env(env);
+	if (c >= 32 && c <= 126)
+		return (1);
 	return (0);
 }

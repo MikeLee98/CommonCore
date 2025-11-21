@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/18 16:44:30 by marioro2          #+#    #+#             */
-/*   Updated: 2025/11/21 04:51:35 by mario            ###   ########.fr       */
+/*   Created: 2025/04/11 16:50:19 by marioro2          #+#    #+#             */
+/*   Updated: 2025/04/24 14:08:22 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-int main(int argc, char **argv, char **envp)
+void	ft_bzero(void *ptr, size_t n)
 {
-    t_env *env;
+	unsigned char	*tmp_ptr;
 
-    env = init_env(envp);
-    // later: export, unset, execve conversions, etc...
-	print_env(env);
-	return (0);
+	tmp_ptr = (unsigned char *)ptr;
+	while (n--)
+		*(tmp_ptr++) = '\0';
 }
+
+// int	main()
+// {
+// 	char	s[] = "hello world";
+// 	ft_bzero(s, 5);
+// }

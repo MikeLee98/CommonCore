@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
+/*   By: marioro2 <marioro2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/18 16:44:30 by marioro2          #+#    #+#             */
-/*   Updated: 2025/11/21 04:51:35 by mario            ###   ########.fr       */
+/*   Created: 2025/04/10 13:37:40 by marioro2          #+#    #+#             */
+/*   Updated: 2025/04/11 16:47:05 by marioro2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-int main(int argc, char **argv, char **envp)
+int	ft_isascii(int c)
 {
-    t_env *env;
-
-    env = init_env(envp);
-    // later: export, unset, execve conversions, etc...
-	print_env(env);
+	if (c >= 0 && c <= 127)
+		return (1);
 	return (0);
 }

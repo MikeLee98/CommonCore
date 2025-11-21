@@ -1,33 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/21 03:57:55 by mario             #+#    #+#             */
-/*   Updated: 2025/11/21 03:57:59 by mario            ###   ########.fr       */
+/*   Created: 2025/04/16 18:23:10 by marioro2          #+#    #+#             */
+/*   Updated: 2025/10/30 02:53:13 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char    *extract_key(char *str)
+#include "libft.h"
+
+char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-    int     i;
+	size_t	i;
+	size_t	j;
 
-    i = 0;
-    while (str[i] && str[i] != '=')
-        i++;
-    return (ft_substr(str, 0, i));
-}
-
-char    *extract_value(char *str)
-{
-    int     i;
-
-    i = 0;
-    while (str[i] && str[i] != '=')
-        i++;
-    if (str[i] == '=')
-        return (ft_strdup(str + i + 1));
-    return (NULL);
+	if (*little == '\0')
+		return ((char *)big);
+	i = 0;
+	while (big[i] && i < len)
+	{
+		j = 0;
+		while (big[i + j] == little[j] && i + j < len)
+		{
+			j++;
+			if (little[j] == '\0')
+				return ((char *)(big + i));
+		}
+		i++;
+	}
+	return (NULL);
 }

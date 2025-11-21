@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_printf_putunsigned.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/18 16:44:30 by marioro2          #+#    #+#             */
-/*   Updated: 2025/11/21 04:51:35 by mario            ###   ########.fr       */
+/*   Created: 2025/05/15 13:56:11 by mario             #+#    #+#             */
+/*   Updated: 2025/08/02 17:46:57 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-int main(int argc, char **argv, char **envp)
+int	ft_printf_putunsigned(unsigned int n)
 {
-    t_env *env;
+	long	nb;
+	char	c;
 
-    env = init_env(envp);
-    // later: export, unset, execve conversions, etc...
-	print_env(env);
-	return (0);
+	nb = n;
+	if (nb >= 10)
+		return (ft_printf_putnbr(nb / 10) + ft_printf_putnbr(nb % 10));
+	c = nb + '0';
+	return (write(1, &c, 1));
 }

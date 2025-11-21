@@ -1,23 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/18 16:44:30 by marioro2          #+#    #+#             */
-/*   Updated: 2025/11/21 04:51:35 by mario            ###   ########.fr       */
+/*   Created: 2025/04/12 02:51:07 by marioro2          #+#    #+#             */
+/*   Updated: 2025/10/30 02:49:21 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-int main(int argc, char **argv, char **envp)
+size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
-    t_env *env;
+	size_t	src_len;
 
-    env = init_env(envp);
-    // later: export, unset, execve conversions, etc...
-	print_env(env);
-	return (0);
+	if (!dst || !src)
+		return (0);
+	src_len = ft_strlen(src);
+	if (size > 0)
+	{
+		if (src_len + 1 < size)
+			ft_memcpy(dst, src, src_len + 1);
+		else
+			ft_memcpy(dst, src, size - 1);
+		dst[size - 1] = 0;
+	}
+	return (src_len);
 }

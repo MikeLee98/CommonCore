@@ -1,18 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marioro2 <marioro2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/18 17:55:05 by marioro2          #+#    #+#             */
-/*   Updated: 2025/11/18 18:02:02 by marioro2         ###   ########.fr       */
+/*   Created: 2025/04/10 12:48:09 by marioro2          #+#    #+#             */
+/*   Updated: 2025/04/21 10:25:57 by marioro2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-void parser(char* input)
+int	ft_isalnum(int c)
 {
-	
+	if (ft_isalpha(c) || ft_isdigit(c))
+		return (1);
+	return (0);
 }

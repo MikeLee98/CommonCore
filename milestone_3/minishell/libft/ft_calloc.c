@@ -1,23 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/18 16:44:30 by marioro2          #+#    #+#             */
-/*   Updated: 2025/11/21 04:51:35 by mario            ###   ########.fr       */
+/*   Created: 2025/04/17 17:55:17 by marioro2          #+#    #+#             */
+/*   Updated: 2025/04/23 19:57:24 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-int main(int argc, char **argv, char **envp)
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-    t_env *env;
+	void	*ptr;
+	size_t	i;
 
-    env = init_env(envp);
-    // later: export, unset, execve conversions, etc...
-	print_env(env);
-	return (0);
+	if (nmemb == 0 || size == 0)
+		return (malloc(0));
+	i = nmemb * size;
+	if (i / nmemb != size)
+		return (NULL);
+	ptr = malloc(i);
+	if (!ptr)
+		return (NULL);
+	ft_memset(ptr, 0, i);
+	return (ptr);
 }

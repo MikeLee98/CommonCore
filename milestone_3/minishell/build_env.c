@@ -6,11 +6,33 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 03:58:21 by mario             #+#    #+#             */
-/*   Updated: 2025/11/21 04:28:41 by mario            ###   ########.fr       */
+/*   Updated: 2025/11/21 04:50:48 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+char    *extract_key(char *str)
+{
+    int     i;
+
+    i = 0;
+    while (str[i] && str[i] != '=')
+        i++;
+    return (ft_substr(str, 0, i));
+}
+
+char    *extract_value(char *str)
+{
+    int     i;
+
+    i = 0;
+    while (str[i] && str[i] != '=')
+        i++;
+    if (str[i] == '=')
+        return (ft_strdup(str + i + 1));
+    return (NULL);
+}
 
 t_env   *env_new(char *str)
 {

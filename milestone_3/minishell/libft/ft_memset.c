@@ -1,23 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/18 16:44:30 by marioro2          #+#    #+#             */
-/*   Updated: 2025/11/21 04:51:35 by mario            ###   ########.fr       */
+/*   Created: 2025/04/10 13:54:05 by marioro2          #+#    #+#             */
+/*   Updated: 2025/04/29 17:30:11 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-int main(int argc, char **argv, char **envp)
+void	*ft_memset(void *ptr, int c, size_t n)
 {
-    t_env *env;
+	unsigned char	*tmp_ptr;
 
-    env = init_env(envp);
-    // later: export, unset, execve conversions, etc...
-	print_env(env);
-	return (0);
+	tmp_ptr = (unsigned char *)(ptr);
+	while (n--)
+		*(tmp_ptr++) = (unsigned char)c;
+	return (ptr);
 }
+
+// int	main()
+// {
+// 	char	s[] = "hello world";
+// 	ft_memset(s, 97, 5);
+// 	printf("%s\n", (s));
+// }
