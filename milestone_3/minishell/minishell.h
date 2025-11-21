@@ -6,12 +6,15 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/18 17:54:44 by marioro2          #+#    #+#             */
-/*   Updated: 2025/11/21 04:47:07 by mario            ###   ########.fr       */
+/*   Updated: 2025/11/21 04:58:48 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
+
+#include "libft/libft.h"
+#include <stdlib.h>
 
 typedef struct s_env {
     char *key;
@@ -19,9 +22,10 @@ typedef struct s_env {
     struct s_env *next;
 } t_env;
 
-#include <readline/readline.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
+t_env   *init_env(char **envp);
+void    env_add_back(t_env **env, t_env *new);
+t_env   *env_new(char *str);
+char    *extract_value(char *str);
+char    *extract_key(char *str);
 
 #endif
