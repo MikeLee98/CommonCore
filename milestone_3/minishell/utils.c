@@ -1,24 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/18 16:44:30 by marioro2          #+#    #+#             */
-/*   Updated: 2025/11/21 04:40:36 by mario            ###   ########.fr       */
+/*   Created: 2025/11/21 03:57:55 by mario             #+#    #+#             */
+/*   Updated: 2025/11/21 03:57:59 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
-#include <readline/readline.h>
-#include <stdio.h>
-#include <stdlib.h>
-
-int main(int argc, char **argv, char **envp)
+char    *extract_key(char *str)
 {
-    t_env *env;
+    int     i;
 
-    env = init_env(envp);
-    // later: export, unset, execve conversions, etc...
+    i = 0;
+    while (str[i] && str[i] != '=')
+        i++;
+    return (ft_substr(str, 0, i));
+}
+
+char    *extract_value(char *str)
+{
+    int     i;
+
+    i = 0;
+    while (str[i] && str[i] != '=')
+        i++;
+    if (str[i] == '=')
+        return (ft_strdup(str + i + 1));
+    return (NULL);
 }
