@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   env.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/18 16:44:30 by marioro2          #+#    #+#             */
-/*   Updated: 2025/11/21 21:49:26 by mario            ###   ########.fr       */
+/*   Created: 2025/11/21 18:59:57 by mario             #+#    #+#             */
+/*   Updated: 2025/11/21 19:00:00 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "env.h"
+#ifndef SO_LONG_H
+# define SO_LONG_H
 
-void    print_env(t_env *env)
-{
-    while (env)
-    {
-        printf("%s=%s\n", env->key, env->value);
-        env = env->next;
-    }
-}
+#include "libft/libft.h"
+#include <stdlib.h>
 
-int main(int argc, char **argv, char **envp)
-{
-    t_env *env;
+typedef struct s_env {
+    char *key;
+    char *value;
+    struct s_env *next;
+} t_env;
 
-    env = init_env(envp);
-    // later: export, unset, execve conversions, etc...
-	print_env(env);
-	return (0);
-}
+t_env   *init_env(char **envp);
+void    env_add_back(t_env **env, t_env *new);
+t_env   *env_new(char *str);
+char    *extract_value(char *str);
+char    *extract_key(char *str);
+
+#endif

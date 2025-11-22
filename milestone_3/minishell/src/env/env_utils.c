@@ -1,31 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   env_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/18 17:54:44 by marioro2          #+#    #+#             */
-/*   Updated: 2025/11/21 04:58:48 by mario            ###   ########.fr       */
+/*   Created: 2025/11/21 22:19:04 by mario             #+#    #+#             */
+/*   Updated: 2025/11/21 22:19:12 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#include "env.h"
 
-#include "libft/libft.h"
-#include <stdlib.h>
+t_env   *env_find(t_env *env, char *key)
+{
+    while (env)
+    {
+        if (ft_strcmp(env->key, key) == 0)
+            return (env);
+        env = env->next;
+    }
+    return (NULL);
+}
 
-typedef struct s_env {
-    char *key;
-    char *value;
-    struct s_env *next;
-} t_env;
+char    *env_get_value(t_env *env, char *key)
+{
+    t_env *node;
 
-t_env   *init_env(char **envp);
-void    env_add_back(t_env **env, t_env *new);
-t_env   *env_new(char *str);
-char    *extract_value(char *str);
-char    *extract_key(char *str);
-
-#endif
+    node = env_find(env, key);
+    if (node)
+        return (node->value);
+    return (NULL);
+}
